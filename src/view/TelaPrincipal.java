@@ -6,6 +6,8 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -50,6 +52,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         jButtonEditarVariaveis = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jMenuBar = new javax.swing.JMenuBar();
+        jMenuObj = new javax.swing.JMenu();
+        jMenuCadastraUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -185,6 +190,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jMenuObj.setText("Segurança");
+
+        jMenuCadastraUsuario.setText("Cadastrar Usuario");
+        jMenuCadastraUsuario.setOpaque(false);
+        jMenuCadastraUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastraUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuObj.add(jMenuCadastraUsuario);
+
+        jMenuBar.add(jMenuObj);
+
+        setJMenuBar(jMenuBar);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,7 +269,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jButtonEditarCultura))))
@@ -325,6 +345,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         creditos.setLocationRelativeTo(this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuCadastraUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastraUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuCadastraUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +397,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JMenuItem jMenuCadastraUsuario;
+    private javax.swing.JMenu jMenuObj;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
@@ -398,6 +425,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void setjButtonEditarVariaveis(JButton jButtonEditarVariaveis) {
         this.jButtonEditarVariaveis = jButtonEditarVariaveis;
+    }
+
+    public JMenuBar getjMenuBar() {
+        return jMenuBar;
+    }
+
+    public void setjMenuBar(JMenuBar jMenuBar) {
+        this.jMenuBar = jMenuBar;
+    }
+
+    public JMenuItem getjMenuCadastraUsuario() {
+        return jMenuCadastraUsuario;
+    }
+
+    public void setjMenuCadastraUsuario(JMenuItem jMenuCadastraUsuario) {
+        this.jMenuCadastraUsuario = jMenuCadastraUsuario;
     }
     
     

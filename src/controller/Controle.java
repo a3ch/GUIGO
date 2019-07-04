@@ -22,6 +22,7 @@ public class Controle implements ActionListener {
     private TelaEditarCultura editarCultura;
     private TelaLogin telaLogin;
     private TelaEditarVariaveisDeAmbiente telaEditarVariaveis;
+    private TelaCadastro telaCadastro;
     
     
     public Controle() {
@@ -42,6 +43,7 @@ public class Controle implements ActionListener {
 
         this.tela.getjButtonEditarCultura().addActionListener(this); // Escuta o botão de editar cultura da tela principal
         this.tela.getjButtonEditarVariaveis().addActionListener(this); // Escuta o botão de editar variaveis da tela principal
+        this.tela.getjMenuCadastraUsuario().addActionListener(this); // Escuta o botão de cadastrar usuarios
     }
 
     @Override
@@ -57,11 +59,22 @@ public class Controle implements ActionListener {
         }
         
         if (e.getSource() == this.telaLogin.getjButtonEntrar()) {
+            String admin = new String();
+            admin = "admin";
+            
             this.telaLogin.setVisible(false);
             this.tela.setVisible(true);
-            //System.out.println(this.telaLogin.getjTextFieldUsuario().getText());
             //System.out.println(this.telaLogin.getjPasswordFieldSenha().getText());
-            
+            if (!admin.equals(this.telaLogin.getjTextFieldUsuario().getText())) {
+                this.escondeMenu();
+            }
+        }
+        
+        if (e.getSource() == this.tela.getjMenuCadastraUsuario()) {
+            this.telaCadastro = new TelaCadastro();
+            this.telaCadastro.setVisible(true);
+            this.telaCadastro.setLocationRelativeTo(tela);
+            this.telaCadastro.setResizable(false);
         }
         
         
@@ -75,6 +88,11 @@ public class Controle implements ActionListener {
             this.tela.enable();
         }
         
+    }
+    
+    private void escondeMenu() {
+        
+        this.tela.getjMenuBar().hide();
     }
    
      
