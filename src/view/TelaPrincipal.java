@@ -31,12 +31,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabelUsuário = new javax.swing.JLabel();
+        jLabelData = new javax.swing.JLabel();
+        jLabelHora = new javax.swing.JLabel();
+        jLabelTemperatura = new javax.swing.JLabel();
+        jLabelUmidade = new javax.swing.JLabel();
+        jLabelLuminosidade = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -45,31 +45,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButtonEditarCultura = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonDesligar = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButtonEditarVariaveis = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonCadastrarCultura = new javax.swing.JButton();
+        jButtonExlcuirCultura = new javax.swing.JButton();
+        jButtonCréditos = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuObj = new javax.swing.JMenu();
         jMenuCadastraUsuario = new javax.swing.JMenuItem();
+        jMenuEditaExcluiUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Usuario: ");
+        jLabelUsuário.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelUsuário.setText("Usuario: ");
 
-        jLabel3.setText("Temperatura:");
+        jLabelData.setText("Data:");
 
-        jLabel4.setText("Umidade:");
+        jLabelHora.setText("Hora:");
 
-        jLabel5.setText("Luminosidade:");
+        jLabelTemperatura.setText("Temperatura:");
 
-        jLabel6.setText("Data:");
+        jLabelUmidade.setText("Umidade:");
 
-        jLabel7.setText("Hora:");
+        jLabelLuminosidade.setText("Luminosidade:");
 
         jTextField1.setText("jTextField1");
         jTextField1.setEnabled(false);
@@ -139,20 +141,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jButtonEditarCultura.setText("Editar");
-        jButtonEditarCultura.addActionListener(new java.awt.event.ActionListener() {
+        jButtonDesligar.setBackground(new java.awt.Color(255, 51, 51));
+        jButtonDesligar.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jButtonDesligar.setText("DESLIGAR");
+        jButtonDesligar.setToolTipText("");
+        jButtonDesligar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditarCulturaActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(255, 51, 51));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jButton2.setText("DESLIGAR");
-        jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonDesligarActionPerformed(evt);
             }
         });
 
@@ -183,23 +178,44 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jButtonEditarVariaveis.setText("Editar");
 
-        jButton1.setText("*");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCadastrarCultura.setText("Cadastrar");
+        jButtonCadastrarCultura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonCadastrarCulturaActionPerformed(evt);
             }
         });
 
-        jMenuObj.setText("Segurança");
+        jButtonExlcuirCultura.setText("Excluir");
+        jButtonExlcuirCultura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExlcuirCulturaActionPerformed(evt);
+            }
+        });
 
-        jMenuCadastraUsuario.setText("Cadastrar Usuario");
-        jMenuCadastraUsuario.setOpaque(false);
+        jButtonCréditos.setText("*");
+        jButtonCréditos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCréditosActionPerformed(evt);
+            }
+        });
+
+        jMenuObj.setText("Administrador");
+
+        jMenuCadastraUsuario.setText("Cadastrar Novo Usuário");
         jMenuCadastraUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCadastraUsuarioActionPerformed(evt);
             }
         });
         jMenuObj.add(jMenuCadastraUsuario);
+
+        jMenuEditaExcluiUsuario.setText("Editar ou Excluir Usuário");
+        jMenuEditaExcluiUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuEditaExcluiUsuarioActionPerformed(evt);
+            }
+        });
+        jMenuObj.add(jMenuEditaExcluiUsuario);
 
         jMenuBar.add(jMenuObj);
 
@@ -216,14 +232,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonEditarCultura)))
+                                .addComponent(jLabelUsuário)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButtonDesligar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -234,31 +245,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                    .addComponent(jLabel5)
+                                                    .addComponent(jLabelLuminosidade)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(jLabel4))
+                                                        .addComponent(jLabelTemperatura)
+                                                        .addComponent(jLabelUmidade))
                                                     .addGap(30, 30, 30)
                                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel6)
-                                                    .addComponent(jLabel7))
+                                                    .addComponent(jLabelData)
+                                                    .addComponent(jLabelHora))
                                                 .addGap(88, 88, 88)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonCadastrarCultura)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButtonExlcuirCultura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 10, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonCréditos)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -266,13 +283,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonDesligar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(jLabelUsuário)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(jButtonEditarCultura))))
+                            .addComponent(jButtonCadastrarCultura)
+                            .addComponent(jButtonExlcuirCultura))))
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -283,27 +301,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
+                            .addComponent(jLabelData)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabelHora))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
+                            .addComponent(jLabelTemperatura)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
+                            .addComponent(jLabelUmidade)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelLuminosidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField3)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(jButtonCréditos)
                 .addContainerGap())
         );
 
@@ -330,24 +348,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
-    private void jButtonEditarCulturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarCulturaActionPerformed
+    private void jButtonCadastrarCulturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarCulturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEditarCulturaActionPerformed
+    }//GEN-LAST:event_jButtonCadastrarCulturaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonDesligarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesligarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButtonDesligarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonCréditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCréditosActionPerformed
         // TODO add your handling code here:
         TelaCreditos creditos = new TelaCreditos();
         creditos.setVisible(true);
         creditos.setLocationRelativeTo(this);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonCréditosActionPerformed
 
     private void jMenuCadastraUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastraUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuCadastraUsuarioActionPerformed
+
+    private void jMenuEditaExcluiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditaExcluiUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuEditaExcluiUsuarioActionPerformed
+
+    private void jButtonExlcuirCulturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExlcuirCulturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonExlcuirCulturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -385,20 +411,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonEditarCultura;
+    private javax.swing.JButton jButtonCadastrarCultura;
+    private javax.swing.JButton jButtonCréditos;
+    private javax.swing.JButton jButtonDesligar;
     private javax.swing.JButton jButtonEditarVariaveis;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jButtonExlcuirCultura;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelData;
+    private javax.swing.JLabel jLabelHora;
+    private javax.swing.JLabel jLabelLuminosidade;
+    private javax.swing.JLabel jLabelTemperatura;
+    private javax.swing.JLabel jLabelUmidade;
+    private javax.swing.JLabel jLabelUsuário;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuCadastraUsuario;
+    private javax.swing.JMenuItem jMenuEditaExcluiUsuario;
     private javax.swing.JMenu jMenuObj;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -412,11 +440,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public JButton getjButtonEditarCultura() {
-        return jButtonEditarCultura;
+        return jButtonCadastrarCultura;
     }
 
     public void setjButtonEditarCultura(JButton jButtonEditarCultura) {
-        this.jButtonEditarCultura = jButtonEditarCultura;
+        this.jButtonCadastrarCultura = jButtonEditarCultura;
     }
 
     public JButton getjButtonEditarVariaveis() {

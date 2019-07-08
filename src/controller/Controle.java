@@ -19,7 +19,7 @@ import view.*;
 public class Controle implements ActionListener {
     
     private TelaPrincipal tela;
-    private TelaEditarCultura editarCultura;
+    private TelaCadastrarCultura editarCultura;
     private TelaLogin telaLogin;
     private TelaEditarVariaveisDeAmbiente telaEditarVariaveis;
     private TelaCadastro telaCadastro;
@@ -38,7 +38,7 @@ public class Controle implements ActionListener {
         
         this.telaEditarVariaveis = new TelaEditarVariaveisDeAmbiente(); // Instância a tela editar variaveis de ambiente
         
-        this.editarCultura = new TelaEditarCultura(); // Instância a tela de editar cultura
+        this.editarCultura = new TelaCadastrarCultura(); // Instância a tela de editar cultura
         
 
         this.tela.getjButtonEditarCultura().addActionListener(this); // Escuta o botão de editar cultura da tela principal
