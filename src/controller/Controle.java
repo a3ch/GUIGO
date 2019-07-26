@@ -19,26 +19,21 @@ import view.*;
 public class Controle implements ActionListener {
     
     private TelaPrincipal tela;
-    private TelaCadastrarCultura editarCultura;
     private TelaLogin telaLogin;
-    private TelaEditarVariaveisDeAmbiente telaEditarVariaveis;
-    private TelaCadastro telaCadastro;
+    private DialogTelaCadastroCultura telaCadastroCultura;
     
     
     public Controle() {
         // Instância a tela de login
         this.telaLogin = new TelaLogin();
         this.telaLogin.setVisible(true); // Ativa a visibilidade
-        
-        
         this.telaLogin.getjButtonEntrar().addActionListener(this); // Escutar o botão de login
+        
+        
         
         this.tela = new TelaPrincipal(); // Instância a tela principal
         this.tela.setVisible(false); // Deixa invisivel
-        
-        this.telaEditarVariaveis = new TelaEditarVariaveisDeAmbiente(); // Instância a tela editar variaveis de ambiente
-        
-        this.editarCultura = new TelaCadastrarCultura(); // Instância a tela de editar cultura
+                
         
 
         this.tela.getjButtonEditarCultura().addActionListener(this); // Escuta o botão de editar cultura da tela principal
@@ -49,13 +44,10 @@ public class Controle implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.tela.getjButtonEditarCultura()) {
-            popUpEditarCultura();
-            this.tela.disable();
-        }
-        
-        if (e.getSource() == this.editarCultura.getjButtonCancelar()) {
-            this.editarCultura.dispose();
-            this.tela.enable();
+            telaCadastroCultura = new DialogTelaCadastroCultura(tela, true);
+            telaCadastroCultura.getjButtonCancelar().addActionListener(this);
+            telaCadastroCultura.setLocationRelativeTo(tela);
+            telaCadastroCultura.show();
         }
         
         if (e.getSource() == this.telaLogin.getjButtonEntrar()) {
@@ -71,22 +63,15 @@ public class Controle implements ActionListener {
         }
         
         if (e.getSource() == this.tela.getjMenuCadastraUsuario()) {
-            this.telaCadastro = new TelaCadastro();
-            this.telaCadastro.setVisible(true);
-            this.telaCadastro.setLocationRelativeTo(tela);
-            this.telaCadastro.setResizable(false);
+            
+        }
+        
+        if (e.getSource() == this.telaCadastroCultura.getjButtonCancelar()) {
+            this.telaCadastroCultura.setVisible(false);
         }
         
         
-        if (e.getSource() == this.tela.getjButtonEditarVariaveis()) {
-            this.popUpEditarVariaveis();
-            this.tela.disable();
-        }
-        
-        if (e.getSource() == this.telaEditarVariaveis.getjButtonCancelar()) {
-            this.telaEditarVariaveis.dispose();
-            this.tela.enable();
-        }
+
         
     }
     
@@ -95,24 +80,4 @@ public class Controle implements ActionListener {
         this.tela.getjMenuBar().hide();
     }
    
-     
-    private void popUpEditarVariaveis() {
-        
-        this.telaEditarVariaveis.getjButtonCancelar().addActionListener(this);
-        
-        this.telaEditarVariaveis.setLocationRelativeTo(tela);
-        this.telaEditarVariaveis.setVisible(true);
-        this.telaEditarVariaveis.setResizable(false);
-    }
-    
-    private void popUpEditarCultura() {
-        
-        this.editarCultura.getjButtonCancelar().addActionListener(this);
-        
-        this.editarCultura.setLocationRelativeTo(tela);
-        this.editarCultura.setVisible(true);
-        this.editarCultura.setResizable(false);
-    }
-    
-    
 }

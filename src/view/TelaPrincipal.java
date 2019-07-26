@@ -14,7 +14,10 @@ import javax.swing.JMenuItem;
  * @author dali
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+    
+    private DialogTelaCadastroCultura telaCadastroCultura;
+    private DialogTelaCreditos telaCreditos;
+    
     /**
      * Creates new form TelaPrincipal
      */
@@ -299,7 +302,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButtonExlcuirCultura))
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -361,6 +363,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCadastrarCulturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarCulturaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonCadastrarCulturaActionPerformed
 
     private void jButtonDesligarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesligarActionPerformed
@@ -369,9 +372,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonCréditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCréditosActionPerformed
         // TODO add your handling code here:
-        TelaCreditos creditos = new TelaCreditos();
-        creditos.setVisible(true);
-        creditos.setLocationRelativeTo(this);
+        telaCreditos = new DialogTelaCreditos(this, rootPaneCheckingEnabled);
+        telaCreditos.setLocationRelativeTo(this);
+        telaCreditos.show();
     }//GEN-LAST:event_jButtonCréditosActionPerformed
 
     private void jMenuCadastraUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastraUsuarioActionPerformed
@@ -388,6 +391,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_jButtonSairActionPerformed
 
     /**
