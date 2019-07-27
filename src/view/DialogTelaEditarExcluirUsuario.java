@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author banshee
@@ -16,6 +18,8 @@ public class DialogTelaEditarExcluirUsuario extends javax.swing.JDialog {
      */
     public DialogTelaEditarExcluirUsuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setTitle("Editar/Excluir Usuario");
+        //this.setUndecorated(modal);
         initComponents();
     }
 
@@ -32,8 +36,8 @@ public class DialogTelaEditarExcluirUsuario extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jButtonSalvar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,9 +59,9 @@ public class DialogTelaEditarExcluirUsuario extends javax.swing.JDialog {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Técnico", "Operacional" }));
 
-        jButton1.setText("Cancelar");
+        jButtonCancelar.setText("Cancelar");
 
-        jButton2.setText("Salvar");
+        jButtonSalvar.setText("Salvar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,9 +77,9 @@ public class DialogTelaEditarExcluirUsuario extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonCancelar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -88,8 +92,8 @@ public class DialogTelaEditarExcluirUsuario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButtonSalvar)
+                    .addComponent(jButtonCancelar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -139,11 +143,20 @@ public class DialogTelaEditarExcluirUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonSalvar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getjButtonCancelar() {
+        return jButtonCancelar;
+    }
+
+    public JButton getjButtonSalvar() {
+        return jButtonSalvar;
+    }
+    
 }

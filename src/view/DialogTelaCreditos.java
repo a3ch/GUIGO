@@ -16,6 +16,7 @@ public class DialogTelaCreditos extends javax.swing.JDialog {
      */
     public DialogTelaCreditos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setTitle("Créditos");
         initComponents();
     }
 

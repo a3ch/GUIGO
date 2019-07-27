@@ -18,6 +18,7 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
      */
     public DialogTelaCadastroCultura(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setTitle("Cadastro de Cultura");
         initComponents();
     }
 
@@ -227,7 +228,6 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     /**

@@ -15,13 +15,13 @@ import javax.swing.JMenuItem;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
     
-    private DialogTelaCadastroCultura telaCadastroCultura;
     private DialogTelaCreditos telaCreditos;
     
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipal() {
+        this.setTitle("GUIGO");
         initComponents();
     }
 
@@ -181,6 +181,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButtonEditarVariaveis.setText("Editar");
+        jButtonEditarVariaveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarVariaveisActionPerformed(evt);
+            }
+        });
 
         jButtonCadastrarCultura.setText("Cadastrar");
         jButtonCadastrarCultura.addActionListener(new java.awt.event.ActionListener() {
@@ -281,7 +286,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                                 .addComponent(jButtonCadastrarCultura)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonExlcuirCultura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonDesligar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -339,6 +344,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -391,8 +397,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
+        //System.exit(0);
     }//GEN-LAST:event_jButtonSairActionPerformed
+
+    private void jButtonEditarVariaveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarVariaveisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarVariaveisActionPerformed
 
     /**
      * @param args the command line arguments
@@ -459,22 +469,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getjButtonEditarCultura() {
-        return jButtonCadastrarCultura;
-    }
-
-    public void setjButtonEditarCultura(JButton jButtonEditarCultura) {
-        this.jButtonCadastrarCultura = jButtonEditarCultura;
-    }
-
-    public JButton getjButtonEditarVariaveis() {
-        return jButtonEditarVariaveis;
-    }
-
-    public void setjButtonEditarVariaveis(JButton jButtonEditarVariaveis) {
-        this.jButtonEditarVariaveis = jButtonEditarVariaveis;
-    }
-
+    
     public JMenuBar getjMenuBar() {
         return jMenuBar;
     }
@@ -489,6 +484,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void setjMenuCadastraUsuario(JMenuItem jMenuCadastraUsuario) {
         this.jMenuCadastraUsuario = jMenuCadastraUsuario;
+    }
+
+    public JButton getjButtonCadastrarCultura() {
+        return jButtonCadastrarCultura;
+    }
+
+    public void setjButtonCadastrarCultura(JButton jButtonCadastrarCultura) {
+        this.jButtonCadastrarCultura = jButtonCadastrarCultura;
+    }
+
+    public JButton getjButtonEditarVariaveis() {
+        return jButtonEditarVariaveis;
+    }
+
+    public void setjButtonEditarVariaveis(JButton jButtonEditarVariaveis) {
+        this.jButtonEditarVariaveis = jButtonEditarVariaveis;
+    }
+
+    public JButton getjButtonExlcuirCultura() {
+        return jButtonExlcuirCultura;
+    }
+
+    public void setjButtonExlcuirCultura(JButton jButtonExlcuirCultura) {
+        this.jButtonExlcuirCultura = jButtonExlcuirCultura;
+    }
+
+    public JMenuItem getjMenuEditaExcluiUsuario() {
+        return jMenuEditaExcluiUsuario;
+    }
+
+    public void setjMenuEditaExcluiUsuario(JMenuItem jMenuEditaExcluiUsuario) {
+        this.jMenuEditaExcluiUsuario = jMenuEditaExcluiUsuario;
+    }
+
+    public JButton getjButtonSair() {
+        return jButtonSair;
     }
     
     

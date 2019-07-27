@@ -6,13 +6,13 @@
 package main;
 
 
-import controller.Controle;
+import controller.ControleLogin;
 /**
  *
  * @author banshee
  */
 public class Sistema {
     public static void main(String[] args) {
-        Controle tela = new Controle();
+        ControleLogin tela = new ControleLogin();
     }
 }
