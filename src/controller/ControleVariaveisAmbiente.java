@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -11,13 +6,29 @@ import view.TelaPrincipal;
 import view.DialogEditarVariaveisAmbiente;
 
 /**
- *
- * @author banshee
+ * Classe utilizada para criar a tela de controle das variáveis de ambiente.
+ * Implementa a interface ActionListener para monitoramento dos objetos adicionados.
+ * 
+ * @author Caio Montenegro
+ * @version 0.1
+ * @since 0.1
  */
-public class ControleVariaveisAmbiente implements ActionListener {
 
+public class ControleVariaveisAmbiente implements ActionListener {
+    /**
+     * @param telaEditarVariaveisAmbiente
+     * @param telaPrincipal
+     */
     private DialogEditarVariaveisAmbiente telaEditarVariaveisAmbiente;
     private TelaPrincipal telaPrincipal;
+    
+     /**
+     * Método construtor.
+     * Recebe um objeto da classe TelaPrincipal.
+     * Deve ser utilizado para instanciar um objeto da classe JDialog e monitorar os botões da mesma (DialogEditarVariaveisAmbiente).
+     * 
+     * @param telaPrincipal É a tela principal já criada.
+     */
 
     public ControleVariaveisAmbiente(TelaPrincipal telaPrincipal) {
         this.telaPrincipal = telaPrincipal;
@@ -26,6 +37,14 @@ public class ControleVariaveisAmbiente implements ActionListener {
         this.telaEditarVariaveisAmbiente.setLocationRelativeTo(telaPrincipal);
         this.telaEditarVariaveisAmbiente.setVisible(true);
     }
+    
+    /**
+     * Método actionPerformed.
+     * É onde o método da interface implementada à classe é utilizada.
+     * Deve ser utilizado para monitorar o botão "Cancelar", que está presente na telaCadastroUsuario.
+     * 
+     * @param e É a variável utilizada para guardar o evento. 
+     */    
     
     @Override
     public void actionPerformed(ActionEvent e) {
