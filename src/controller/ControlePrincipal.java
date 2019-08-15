@@ -2,7 +2,8 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.TelaPrincipal;
+import java.io.IOException;
+import view.Tela;
 
 /**
  * Classe utilizada para criar a tela principal.
@@ -17,7 +18,7 @@ public class ControlePrincipal implements ActionListener {
     /**
      * @param telaPrincipal
      */
-    private TelaPrincipal telaPrincipal;
+    private Tela telaPrincipal;
     
     /**
      * Método construtor.
@@ -27,16 +28,17 @@ public class ControlePrincipal implements ActionListener {
      * @since 0.1
      */
 
-    public ControlePrincipal() {
-        telaPrincipal = new TelaPrincipal();
+    public ControlePrincipal() throws IOException {
+        telaPrincipal = new Tela();
         telaPrincipal.setVisible(true);
         
+        /*
         telaPrincipal.getjButtonCadastrarCultura().addActionListener(this); // Escuta o botão de editar cultura da tela principal
         telaPrincipal.getjButtonEditarVariaveis().addActionListener(this); // Escuta o botão de editar variaveis da tela principal
         telaPrincipal.getjMenuCadastraUsuario().addActionListener(this); // Escuta o botão de cadastrar usuarios
         telaPrincipal.getjMenuEditaExcluiUsuario().addActionListener(this); // Escuta o botão de editar/excluir usuarios
         telaPrincipal.getjButtonSair().addActionListener(this);
-        
+        */
     }
     
     /**
@@ -49,6 +51,7 @@ public class ControlePrincipal implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        /*
         // Cadastrar
         if (e.getSource() == telaPrincipal.getjButtonCadastrarCultura()) {
             ControleCadastroCultura ccc = new ControleCadastroCultura(telaPrincipal);
@@ -72,7 +75,7 @@ public class ControlePrincipal implements ActionListener {
         //Sair
         if (e.getSource() == telaPrincipal.getjButtonSair()) {
             System.exit(0);
-        }
+        }*/
         
     }
     

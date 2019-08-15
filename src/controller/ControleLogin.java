@@ -3,7 +3,9 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import view.TelaLogin;
+import java.io.IOException;
+import view.TelaDescanso;
+import view.DialogTelaLogin;
 
 /**
  * Classe utilizada para criar a tela de login.
@@ -18,20 +20,27 @@ public class ControleLogin implements ActionListener {
     /**
      * @param rNLogin
      * @param telaLogin
+     * @param telaDescanso
      */
     private RNLogin rNLogin;
-    private TelaLogin telaLogin;
+    private DialogTelaLogin telaLogin;
+    private TelaDescanso telaDescanso;
 
     /**
     * Método construtor.
     * Não recebe nenhum parâmetro, visto que é a primeira tela a ser executada.
     * Deve ser utilizado para instanciar um objeto da classe JFrame e monitorar os botões da mesma (telaLogin).
+    * @throws java.io.IOException
     */
     
-    public ControleLogin() {
-        this.telaLogin = new TelaLogin(); // Instancia a tela de Login e salva na variável "telaLogin".
+    public ControleLogin() throws IOException {
+        this.telaDescanso = new TelaDescanso();
+        this.telaDescanso.setVisible(true);
+        
+        this.telaLogin = new DialogTelaLogin(telaDescanso, true); // Instancia a tela de Login e salva na variável "telaLogin".
+        this.telaLogin.setLocationRelativeTo(telaDescanso);
         this.telaLogin.getjButtonEntrar().addActionListener(this); // Adiciona o botão "Cancelar" da tela de Login ao ActionListener.
-        this.rNLogin = new RNLogin(telaLogin); // Passa a telaLogin para sua respectiva regra de negócio.
+        this.rNLogin = new RNLogin(telaLogin, telaDescanso); // Passa a telaLogin para sua respectiva regra de negócio.
         this.telaLogin.setVisible(true); // Faz a telaLogin ficar visível ao usuário.
         this.telaLogin.getjPasswordFieldSenha().addKeyListener(new java.awt.event.KeyAdapter() { // Monitoramento do campo de senha com um objeto KeyAdapter.
             

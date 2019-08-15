@@ -1,8 +1,8 @@
 package controller;
 
 import javax.swing.JOptionPane;
-import view.TelaLogin;
-import view.TelaPrincipal;
+import view.DialogTelaLogin;
+import view.TelaDescanso;
 import model.Usuario;
 
 /**
@@ -18,14 +18,16 @@ public class RNLogin {
     /**
      * @param telaLogin
      */
-    private TelaLogin telaLogin;
+    private DialogTelaLogin telaLogin;
+    private TelaDescanso telaDescanso;
     
     /**
      * Faz associação da TelaPrincipal recebida para o objeto que criado nessa classe. 
      * @param telaLogin Objeto de tela que foi instanciado em ControleLogin.
      */    
-    public RNLogin(TelaLogin telaLogin) {
+    public RNLogin(DialogTelaLogin telaLogin, TelaDescanso telaDescanso) {
         this.telaLogin = telaLogin;
+        this.telaDescanso = telaDescanso;
     }
     
     /**
@@ -38,6 +40,7 @@ public class RNLogin {
         usuario.setSenha(telaLogin.getjPasswordFieldSenha().getText());
         
         if (usuario.getLogin().equals("admin")) {
+            this.telaDescanso.dispose();
             ControlePrincipal cp = new ControlePrincipal();
             this.telaLogin.dispose();
         } else {
