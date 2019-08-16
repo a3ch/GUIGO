@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import view.TelaDescanso;
 import view.DialogTelaLogin;
 
@@ -35,12 +37,14 @@ public class ControleLogin implements ActionListener {
     
     public ControleLogin() throws IOException {
         this.telaDescanso = new TelaDescanso();
-        this.telaDescanso.setVisible(true);
+        
         
         this.telaLogin = new DialogTelaLogin(telaDescanso, true); // Instancia a tela de Login e salva na variável "telaLogin".
         this.telaLogin.setLocationRelativeTo(telaDescanso);
         this.telaLogin.getjButtonEntrar().addActionListener(this); // Adiciona o botão "Cancelar" da tela de Login ao ActionListener.
         this.rNLogin = new RNLogin(telaLogin, telaDescanso); // Passa a telaLogin para sua respectiva regra de negócio.
+        this.telaDescanso.setVisible(true);
+
         this.telaLogin.setVisible(true); // Faz a telaLogin ficar visível ao usuário.
         this.telaLogin.getjPasswordFieldSenha().addKeyListener(new java.awt.event.KeyAdapter() { // Monitoramento do campo de senha com um objeto KeyAdapter.
             
@@ -50,12 +54,18 @@ public class ControleLogin implements ActionListener {
              * @param evt É a variável utilizada para guardar o evento.
              */
             
+            @Override
             public void keyPressed(java.awt.event.KeyEvent evt) { 
                 if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                    acesso();
+                    try {
+                        acesso();
+                    } catch (IOException ex) {
+                        Logger.getLogger(ControleLogin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
         });
+        
     }
      
     /**
@@ -69,7 +79,11 @@ public class ControleLogin implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) { 
         if (e.getSource() == telaLogin.getjButtonEntrar()) {
-            acesso();
+            try {
+                acesso();
+            } catch (IOException ex) {
+                Logger.getLogger(ControleLogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
@@ -78,7 +92,7 @@ public class ControleLogin implements ActionListener {
      * Ele é utilizado somente quando acontecem os eventos específico, neste caso o clique no botão "Entrar" ou na tecla ENTER. 
      */
     
-    private void acesso() { 
+    private void acesso() throws IOException { 
         this.rNLogin.acesso(); 
         // Verifica se os dados inseridos pelo usuário estão corretos, de acordo com a regra de negócio.
         // Assim permitindo o seu login ao sistema.

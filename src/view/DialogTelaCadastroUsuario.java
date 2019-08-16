@@ -6,6 +6,10 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -33,15 +37,21 @@ public class DialogTelaCadastroUsuario extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButtonCancelar = new javax.swing.JButton();
+        jComboBoxTipo = new javax.swing.JComboBox<>();
+        jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jButtonFechar = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableUsuario = new javax.swing.JTable();
+        jButtonLimpar = new javax.swing.JButton();
+        jButtonNovo = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,17 +60,17 @@ public class DialogTelaCadastroUsuario extends javax.swing.JDialog {
 
         jLabel2.setText("Nome:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldNomeActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Sobrenome:");
+        jLabel3.setText("E-mail:");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jTextFieldEmailActionPerformed(evt);
             }
         });
 
@@ -68,18 +78,18 @@ public class DialogTelaCadastroUsuario extends javax.swing.JDialog {
 
         jLabel5.setText("Tipo de Usuario:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Operacional", "Técnico" }));
+        jComboBoxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrativo", "Operacional", "Técnico" }));
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        jPasswordFieldSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                jPasswordFieldSenhaActionPerformed(evt);
             }
         });
 
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFechar.setText("Cancelar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+                jButtonFecharActionPerformed(evt);
             }
         });
 
@@ -90,34 +100,92 @@ public class DialogTelaCadastroUsuario extends javax.swing.JDialog {
             }
         });
 
+        jTableUsuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "E-mail", "Senha", "Tipo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableUsuario);
+
+        jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
+
+        jButtonNovo.setText("Novo");
+        jButtonNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNovoActionPerformed(evt);
+            }
+        });
+
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+
+        jButtonExcluir.setText("Excluir");
+        jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExcluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1)
-                            .addComponent(jPasswordField1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, 136, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCancelar)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4))
+                                    .addGap(52, 52, 52)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(206, 206, 206)
+                                .addComponent(jLabel3))
+                            .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -128,48 +196,72 @@ public class DialogTelaCadastroUsuario extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSalvar)
-                    .addComponent(jButtonCancelar))
+                    .addComponent(jButtonFechar)
+                    .addComponent(jButtonLimpar))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNovo)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonExcluir))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void jPasswordFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_jPasswordFieldSenhaActionPerformed
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonLimparActionPerformed
+
+    private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNovoActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -214,25 +306,134 @@ public class DialogTelaCadastroUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonFechar;
+    private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSalvar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jPasswordFieldSenha;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableUsuario;
+    private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getjButtonCancelar() {
-        return jButtonCancelar;
+    public JButton getjButtonEditar() {
+        return jButtonEditar;
+    }
+
+    public void setjButtonEditar(JButton jButtonEditar) {
+        this.jButtonEditar = jButtonEditar;
+    }
+
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public void setjButtonExcluir(JButton jButtonExcluir) {
+        this.jButtonExcluir = jButtonExcluir;
+    }
+
+    public JButton getjButtonFechar() {
+        return jButtonFechar;
+    }
+
+    public void setjButtonFechar(JButton jButtonFechar) {
+        this.jButtonFechar = jButtonFechar;
+    }
+
+    public JButton getjButtonLimpar() {
+        return jButtonLimpar;
+    }
+
+    public void setjButtonLimpar(JButton jButtonLimpar) {
+        this.jButtonLimpar = jButtonLimpar;
+    }
+
+    public JButton getjButtonNovo() {
+        return jButtonNovo;
+    }
+
+    public void setjButtonNovo(JButton jButtonNovo) {
+        this.jButtonNovo = jButtonNovo;
     }
 
     public JButton getjButtonSalvar() {
         return jButtonSalvar;
+    }
+
+    public void setjButtonSalvar(JButton jButtonSalvar) {
+        this.jButtonSalvar = jButtonSalvar;
+    }
+
+    public JComboBox<String> getjComboBoxTipo() {
+        return jComboBoxTipo;
+    }
+
+    public void setjComboBoxTipo(JComboBox<String> jComboBoxTipo) {
+        this.jComboBoxTipo = jComboBoxTipo;
+    }
+
+    public JPasswordField getjPasswordFieldSenha() {
+        return jPasswordFieldSenha;
+    }
+
+    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
+        this.jPasswordFieldSenha = jPasswordFieldSenha;
+    }
+
+    public JTable getjTableUsuario() {
+        return jTableUsuario;
+    }
+
+    public void setjTableUsuario(JTable jTableUsuario) {
+        this.jTableUsuario = jTableUsuario;
+    }
+
+    public JTextField getjTextFieldEmail() {
+        return jTextFieldEmail;
+    }
+
+    public void setjTextFieldEmail(JTextField jTextFieldEmail) {
+        this.jTextFieldEmail = jTextFieldEmail;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public void limpar() {
+        jTextFieldNome.setText("");
+        jTextFieldNome.setText("");
+        jPasswordFieldSenha.setText("");
+        jComboBoxTipo.setSelectedIndex(0);
+    }
+    
+    public void gerenciarCampos() {
+        jTextFieldNome.setEnabled(!jTextFieldNome.isEnabled());
+        jTextFieldEmail.setEnabled(!jTextFieldEmail.isEnabled());
+        jPasswordFieldSenha.setEnabled(!jPasswordFieldSenha.isEnabled());
+        jComboBoxTipo.setEnabled(!jComboBoxTipo.isEnabled());
+        
+        jButtonLimpar.setEnabled(!jButtonLimpar.isEnabled());
+        jButtonSalvar.setEnabled(!jButtonSalvar.isEnabled());
+    }
+    
+    public void gerenciarBotoes() {
+        jButtonNovo.setEnabled(!jButtonNovo.isEnabled());
+        jButtonEditar.setEnabled(!jButtonEditar.isEnabled());
+        jButtonExcluir.setEnabled(!jButtonExcluir.isEnabled());
     }
     
 }

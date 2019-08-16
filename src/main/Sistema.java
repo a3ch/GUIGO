@@ -7,12 +7,13 @@ package main;
 
 
 import controller.ControleLogin;
+import java.io.IOException;
 /**
  *
  * @author banshee
  */
 public class Sistema {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         ControleLogin tela = new ControleLogin();
     }
 }

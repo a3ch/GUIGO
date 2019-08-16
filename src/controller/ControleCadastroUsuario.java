@@ -21,6 +21,7 @@ public class ControleCadastroUsuario implements ActionListener {
      */
     private DialogTelaCadastroUsuario telaCadastroUsuario;
     private TelaPrincipal telaPrincipal;
+    private RNCadastroUsuario rRUsuario;
      /**
      * Método construtor.
      * Recebe um objeto da classe TelaPrincipal.
@@ -32,8 +33,16 @@ public class ControleCadastroUsuario implements ActionListener {
     public ControleCadastroUsuario(TelaPrincipal telaPrincipal) {
         this.telaPrincipal = telaPrincipal; // Faz associação da TelaPrincipal recebida para o objeto que criado nessa classe.
         this.telaCadastroUsuario = new DialogTelaCadastroUsuario(telaPrincipal, true); // Instancia a nova tela relativa a TelaPrincipal.
-        this.telaCadastroUsuario.getjButtonCancelar().addActionListener(this); // Adiciona o botão "Cancelar" da nova tela ao ActionListener. 
         this.telaCadastroUsuario.setLocationRelativeTo(telaPrincipal); // Define a localização da tela relativa à mãe (TelaPrincipal).
+        this.telaCadastroUsuario.getjButtonFechar().addActionListener(this); // Adiciona o botão "Fechar" da nova tela ao ActionListener. 
+        this.telaCadastroUsuario.getjButtonNovo().addActionListener(this);
+        this.telaCadastroUsuario.getjButtonSalvar().addActionListener(this);
+        this.telaCadastroUsuario.getjButtonLimpar().addActionListener(this);
+        this.telaCadastroUsuario.getjButtonEditar().addActionListener(this);
+        this.telaCadastroUsuario.getjButtonExcluir().addActionListener(this);
+        
+        this.rRUsuario = new RNCadastroUsuario(telaCadastroUsuario);
+        
         this.telaCadastroUsuario.setVisible(true); // Faz a telaCadastroCultura ficar visível ao usuário.
     }
     
@@ -47,9 +56,38 @@ public class ControleCadastroUsuario implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) { 
-        if (e.getSource() == telaCadastroUsuario.getjButtonCancelar()) { // Se o botão "Cancelar" for pressionado,
+        // Fechar
+        if (e.getSource() == telaCadastroUsuario.getjButtonFechar()) { // Se o botão "Fechar" for pressionado,
             telaCadastroUsuario.dispose(); // Exclui a telaCadastroCultura.
         }
+        
+        // Novo
+        if (e.getSource() == telaCadastroUsuario.getjButtonNovo()) {
+            this.novo();
+        }
+        
+        // Limpar
+        if (e.getSource() == telaCadastroUsuario.getjButtonLimpar()) {
+            this.limpar();
+        }
+        
+        // Salvar
+        if(e.getSource() == telaCadastroUsuario.getjButtonSalvar()) {
+            this.salvar();
+        }
+        
     }
     
+    
+    private void salvar() {
+        this.rRUsuario.salvar();
+    }
+    
+    private void limpar() {
+        this.rRUsuario.limpar();
+    }
+    
+    private void novo() {
+        this.rRUsuario.novo();
+    }
 }

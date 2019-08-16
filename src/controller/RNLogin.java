@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import view.DialogTelaLogin;
 import view.TelaDescanso;
@@ -33,15 +34,25 @@ public class RNLogin {
     /**
      * Método Construtor.
      * Esse método cria uma instancia do objeto usuário, somente se o campo de usuário e senha forem validados pelo DAO.
+     * @throws java.io.IOException
      */
-    public void acesso() {
+    public void acesso() throws IOException {
         Usuario usuario = new Usuario();
         usuario.setLogin(telaLogin.getjTextFieldUsuario().getText());
         usuario.setSenha(telaLogin.getjPasswordFieldSenha().getText());
         
         if (usuario.getLogin().equals("admin")) {
             this.telaDescanso.dispose();
-            ControlePrincipal cp = new ControlePrincipal();
+            new ControlePrincipal(usuario.getLogin().toString());
+            this.telaLogin.dispose();
+            
+        } else if(usuario.getLogin().equals("tec")) {
+            this.telaDescanso.dispose();
+            new ControlePrincipal(usuario.getLogin().toString());
+            this.telaLogin.dispose();
+        } else if(usuario.getLogin().equals("op")){
+            this.telaDescanso.dispose();
+            new ControlePrincipal(usuario.getLogin().toString());
             this.telaLogin.dispose();
         } else {
             JOptionPane.showMessageDialog(telaLogin, "Acesso Negado");

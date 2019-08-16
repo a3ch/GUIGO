@@ -6,6 +6,8 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -45,7 +47,12 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
         jTextFieldEngorda = new javax.swing.JTextField();
         jButtonSalvar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
-        jButtonCancelar = new javax.swing.JButton();
+        jButtonFechar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableCulturas = new javax.swing.JTable();
+        jButtonExcluir = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -111,12 +118,36 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
             }
         });
 
-        jButtonCancelar.setText("Cancelar");
-        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonFechar.setText("Fechar");
+        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCancelarActionPerformed(evt);
+                jButtonFecharActionPerformed(evt);
             }
         });
+
+        jTableCulturas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Variedade", "Ciclo", "Câmara de Germinação", "Berçário", "Engorda"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableCulturas);
+
+        jButtonExcluir.setText("Excluir");
+
+        jButtonEditar.setText("Editar");
+
+        jButtonNovo.setText("Novo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,46 +156,70 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCiclo, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldBercario, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldVariedade, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonCancelar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldEngorda, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(227, 227, 227)
+                                .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                                .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldBercario, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldCiclo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldVariedade)
+                                    .addComponent(jTextFieldNome))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldCamaraGerminacao, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldEngorda, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCamaraGerminacao))
+                        .addGap(25, 25, 25))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldVariedade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTextFieldVariedade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextFieldCamaraGerminacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldEngorda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -173,22 +228,19 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldBercario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextFieldCamaraGerminacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextFieldEngorda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonLimpar)
                     .addComponent(jButtonSalvar)
-                    .addComponent(jButtonCancelar))
-                .addGap(21, 21, 21))
+                    .addComponent(jButtonLimpar)
+                    .addComponent(jButtonFechar))
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonNovo)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonExcluir))
+                .addContainerGap())
         );
 
         pack();
@@ -226,9 +278,9 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonCancelarActionPerformed
+    }//GEN-LAST:event_jButtonFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,8 +325,11 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCancelar;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonExcluir;
+    private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonLimpar;
+    private javax.swing.JButton jButtonNovo;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -282,6 +337,8 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableCulturas;
     private javax.swing.JTextField jTextFieldBercario;
     private javax.swing.JTextField jTextFieldCamaraGerminacao;
     private javax.swing.JTextField jTextFieldCiclo;
@@ -290,12 +347,12 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldVariedade;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getjButtonCancelar() {
-        return jButtonCancelar;
+    public JButton getjButtonFechar() {
+        return jButtonFechar;
     }
 
-    public void setjButtonCancelar(JButton jButtonCancelar) {
-        this.jButtonCancelar = jButtonCancelar;
+    public void setjButtonFechar(JButton jButtonCancelar) {
+        this.jButtonFechar = jButtonCancelar;
     }
 
     public JButton getjButtonLimpar() {
@@ -313,5 +370,111 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
     public void setjButtonSalvar(JButton jButtonSalvar) {
         this.jButtonSalvar = jButtonSalvar;
     }
+
+    public JButton getjButtonEditar() {
+        return jButtonEditar;
+    }
+
+    public void setjButtonEditar(JButton jButtonEditar) {
+        this.jButtonEditar = jButtonEditar;
+    }
+
+    public JButton getjButtonExcluir() {
+        return jButtonExcluir;
+    }
+
+    public void setjButtonExcluir(JButton jButtonExcluir) {
+        this.jButtonExcluir = jButtonExcluir;
+    }
+
+    public JButton getjButtonNovo() {
+        return jButtonNovo;
+    }
+
+    public void setjButtonNovo(JButton jButtonNovo) {
+        this.jButtonNovo = jButtonNovo;
+    }
+
+    public JTable getjTableCulturas() {
+        return jTableCulturas;
+    }
+
+    public void setjTableCulturas(JTable jTableCulturas) {
+        this.jTableCulturas = jTableCulturas;
+    }
+
+    public JTextField getjTextFieldBercario() {
+        return jTextFieldBercario;
+    }
+
+    public void setjTextFieldBercario(JTextField jTextFieldBercario) {
+        this.jTextFieldBercario = jTextFieldBercario;
+    }
+
+    public JTextField getjTextFieldCamaraGerminacao() {
+        return jTextFieldCamaraGerminacao;
+    }
+
+    public void setjTextFieldCamaraGerminacao(JTextField jTextFieldCamaraGerminacao) {
+        this.jTextFieldCamaraGerminacao = jTextFieldCamaraGerminacao;
+    }
+
+    public JTextField getjTextFieldCiclo() {
+        return jTextFieldCiclo;
+    }
+
+    public void setjTextFieldCiclo(JTextField jTextFieldCiclo) {
+        this.jTextFieldCiclo = jTextFieldCiclo;
+    }
+
+    public JTextField getjTextFieldEngorda() {
+        return jTextFieldEngorda;
+    }
+
+    public void setjTextFieldEngorda(JTextField jTextFieldEngorda) {
+        this.jTextFieldEngorda = jTextFieldEngorda;
+    }
+
+    public JTextField getjTextFieldNome() {
+        return jTextFieldNome;
+    }
+
+    public void setjTextFieldNome(JTextField jTextFieldNome) {
+        this.jTextFieldNome = jTextFieldNome;
+    }
+
+    public JTextField getjTextFieldVariedade() {
+        return jTextFieldVariedade;
+    }
+
+    public void setjTextFieldVariedade(JTextField jTextFieldVariedade) {
+        this.jTextFieldVariedade = jTextFieldVariedade;
+    }
     
+    public void limpar() {
+        jTextFieldNome.setText("");
+        jTextFieldVariedade.setText("");
+        jTextFieldEngorda.setText("");
+        jTextFieldCiclo.setText("");
+        jTextFieldCamaraGerminacao.setText("");
+        jTextFieldBercario.setText("");
+    }
+    
+    public void gerenciarCampos() {
+        jTextFieldNome.setEnabled(!jTextFieldNome.isEnabled());
+        jTextFieldVariedade.setEnabled(!jTextFieldVariedade.isEnabled());
+        jTextFieldEngorda.setEnabled(!jTextFieldEngorda.isEnabled());
+        jTextFieldCiclo.setEnabled(!jTextFieldCiclo.isEnabled());
+        jTextFieldCamaraGerminacao.setEnabled(!jTextFieldCamaraGerminacao.isEnabled());
+        jTextFieldBercario.setEnabled(!jTextFieldBercario.isEnabled());
+        
+        jButtonSalvar.setEnabled(!jButtonSalvar.isEnabled());
+        jButtonLimpar.setEnabled(!jButtonLimpar.isEnabled());
+    }
+    
+    public void gerenciarBotoes() {
+        jButtonNovo.setEnabled(!jButtonNovo.isEnabled());
+        jButtonExcluir.setEnabled(!jButtonExcluir.isEnabled());
+        jButtonEditar.setEnabled(!jButtonEditar.isEnabled());
+    }
 }

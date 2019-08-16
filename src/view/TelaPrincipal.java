@@ -5,24 +5,35 @@
  */
 package view;
 
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+ 
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
+ 
+import com.towel.swing.img.JImagePanel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 /**
  *
- * @author dali
+ * @author banshee
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-    
-    private DialogTelaCreditos telaCreditos;
-    
+
     /**
-     * Creates new form TelaPrincipal
+     * Creates new form Tela
      */
-    public TelaPrincipal() {
-        this.setTitle("GUIGO");
+    public TelaPrincipal() throws IOException {
         initComponents();
+        
+        setExtendedState(MAXIMIZED_BOTH); 
     }
 
     /**
@@ -34,375 +45,143 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelUsuário = new javax.swing.JLabel();
-        jLabelData = new javax.swing.JLabel();
-        jLabelHora = new javax.swing.JLabel();
-        jLabelTemperatura = new javax.swing.JLabel();
-        jLabelUmidade = new javax.swing.JLabel();
-        jLabelLuminosidade = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButtonDesligar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButtonEditarVariaveis = new javax.swing.JButton();
-        jButtonCadastrarCultura = new javax.swing.JButton();
-        jButtonExlcuirCultura = new javax.swing.JButton();
-        jButtonCréditos = new javax.swing.JButton();
-        jButtonSair = new javax.swing.JButton();
-        jMenuBar = new javax.swing.JMenuBar();
-        jMenuObj = new javax.swing.JMenu();
-        jMenuCadastraUsuario = new javax.swing.JMenuItem();
-        jMenuEditaExcluiUsuario = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabelTest = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuCultura = new javax.swing.JMenuItem();
+        jMenuUsuarios = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
-        jLabelUsuário.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelUsuário.setText("Usuario: ");
+        jPanel3.setBackground(new java.awt.Color(254, 146, 38));
 
-        jLabelData.setText("Data:");
+        jLabelTest.setLabelFor(jMenu1);
+        jLabelTest.setMaximumSize(new java.awt.Dimension(20, 20));
+        jLabelTest.setMinimumSize(new java.awt.Dimension(20, 20));
+        jLabelTest.setPreferredSize(new java.awt.Dimension(20, 20));
 
-        jLabelHora.setText("Hora:");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabelTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(304, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(jLabelTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+        );
 
-        jLabelTemperatura.setText("Temperatura:");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        jLabelUmidade.setText("Umidade:");
+        jPanel2.setBackground(new java.awt.Color(61, 216, 172));
 
-        jLabelLuminosidade.setText("Luminosidade:");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Desktop_Guigó_400px.png"))); // NOI18N
+        jLabel1.setAlignmentY(0.0F);
+        jLabel1.setAutoscrolls(true);
+        jLabel1.setBorder(null);
 
-        jTextField1.setText("jTextField1");
-        jTextField1.setEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 335, Short.MAX_VALUE))
+        );
+
+        jMenu1.setText("Administrador");
+
+        jMenuCultura.setText("Cultura");
+        jMenuCultura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jMenuCulturaActionPerformed(evt);
             }
         });
+        jMenu1.add(jMenuCultura);
 
-        jTextField2.setText("jTextField1");
-        jTextField2.setEnabled(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuUsuarios.setText("Usuarios");
+        jMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                jMenuUsuariosActionPerformed(evt);
             }
         });
+        jMenu1.add(jMenuUsuarios);
 
-        jTextField3.setText("jTextField1");
-        jTextField3.setEnabled(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
+        jMenuBar1.add(jMenu1);
 
-        jTextField4.setText("jTextField1");
-        jTextField4.setEnabled(false);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
+        jMenu2.setText("Edit");
 
-        jTextField5.setText("jTextField1");
-        jTextField5.setEnabled(false);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
+        jMenuSair.setText("Sair");
+        jMenu2.add(jMenuSair);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("CULTURAS:");
+        jMenuBar1.add(jMenu2);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Data", "Hora", "Temperatura", "Umidade", "Luminosidade"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        jButtonDesligar.setBackground(new java.awt.Color(255, 51, 51));
-        jButtonDesligar.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jButtonDesligar.setText("DESLIGAR");
-        jButtonDesligar.setToolTipText("");
-        jButtonDesligar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDesligarActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Dados coletados em tempo real:");
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nome", "Variedade", "Ciclo", "Camara De Germinação", "Berçario", "Engorda"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        jButtonEditarVariaveis.setText("Editar");
-        jButtonEditarVariaveis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditarVariaveisActionPerformed(evt);
-            }
-        });
-
-        jButtonCadastrarCultura.setText("Cadastrar");
-        jButtonCadastrarCultura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarCulturaActionPerformed(evt);
-            }
-        });
-
-        jButtonExlcuirCultura.setText("Excluir");
-        jButtonExlcuirCultura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonExlcuirCulturaActionPerformed(evt);
-            }
-        });
-
-        jButtonCréditos.setText("*");
-        jButtonCréditos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCréditosActionPerformed(evt);
-            }
-        });
-
-        jButtonSair.setText("Sair");
-        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSairActionPerformed(evt);
-            }
-        });
-
-        jMenuObj.setText("Administrador");
-
-        jMenuCadastraUsuario.setText("Cadastrar Novo Usuário");
-        jMenuCadastraUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCadastraUsuarioActionPerformed(evt);
-            }
-        });
-        jMenuObj.add(jMenuCadastraUsuario);
-
-        jMenuEditaExcluiUsuario.setText("Editar ou Excluir Usuário");
-        jMenuEditaExcluiUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuEditaExcluiUsuarioActionPerformed(evt);
-            }
-        });
-        jMenuObj.add(jMenuEditaExcluiUsuario);
-
-        jMenuBar.add(jMenuObj);
-
-        setJMenuBar(jMenuBar);
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelUsuário)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonSair))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEditarVariaveis))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabelLuminosidade)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabelTemperatura)
-                                                .addComponent(jLabelUmidade))
-                                            .addGap(30, 30, 30)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabelData)
-                                            .addComponent(jLabelHora))
-                                        .addGap(88, 88, 88)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCadastrarCultura)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonExlcuirCultura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonDesligar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonCréditos)))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelUsuário)
-                    .addComponent(jButtonSair))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jButtonCadastrarCultura)
-                    .addComponent(jButtonExlcuirCultura))
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(jButtonEditarVariaveis))
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelData)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabelHora))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelTemperatura)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelUmidade)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(9, 9, 9)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelLuminosidade, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField3)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonDesligar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonCréditos)))
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private static BufferedImage loadImage(String file) throws IOException {
+        return ImageIO.read(new File(file));
+    }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void jMenuCulturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCulturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_jMenuCulturaActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void jMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuariosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jButtonCadastrarCulturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarCulturaActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jButtonCadastrarCulturaActionPerformed
-
-    private void jButtonDesligarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDesligarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonDesligarActionPerformed
-
-    private void jButtonCréditosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCréditosActionPerformed
-        // TODO add your handling code here:
-        telaCreditos = new DialogTelaCreditos(this, rootPaneCheckingEnabled);
-        telaCreditos.setLocationRelativeTo(this);
-        telaCreditos.show();
-    }//GEN-LAST:event_jButtonCréditosActionPerformed
-
-    private void jMenuCadastraUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastraUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuCadastraUsuarioActionPerformed
-
-    private void jMenuEditaExcluiUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuEditaExcluiUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuEditaExcluiUsuarioActionPerformed
-
-    private void jButtonExlcuirCulturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExlcuirCulturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonExlcuirCulturaActionPerformed
-
-    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
-        // TODO add your handling code here:
-        //System.exit(0);
-    }//GEN-LAST:event_jButtonSairActionPerformed
-
-    private void jButtonEditarVariaveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarVariaveisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEditarVariaveisActionPerformed
+    }//GEN-LAST:event_jMenuUsuariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,99 +209,75 @@ public class TelaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                try {
+                    new TelaPrincipal().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCadastrarCultura;
-    private javax.swing.JButton jButtonCréditos;
-    private javax.swing.JButton jButtonDesligar;
-    private javax.swing.JButton jButtonEditarVariaveis;
-    private javax.swing.JButton jButtonExlcuirCultura;
-    private javax.swing.JButton jButtonSair;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelData;
-    private javax.swing.JLabel jLabelHora;
-    private javax.swing.JLabel jLabelLuminosidade;
-    private javax.swing.JLabel jLabelTemperatura;
-    private javax.swing.JLabel jLabelUmidade;
-    private javax.swing.JLabel jLabelUsuário;
-    private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenuItem jMenuCadastraUsuario;
-    private javax.swing.JMenuItem jMenuEditaExcluiUsuario;
-    private javax.swing.JMenu jMenuObj;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelTest;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuCultura;
+    private javax.swing.JMenuItem jMenuSair;
+    private javax.swing.JMenuItem jMenuUsuarios;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
-    
-    public JMenuBar getjMenuBar() {
-        return jMenuBar;
+    public JMenuItem getjMenuCultura() {
+        return jMenuCultura;
     }
 
-    public void setjMenuBar(JMenuBar jMenuBar) {
-        this.jMenuBar = jMenuBar;
+    public void setjMenuCultura(JMenuItem jMenuCultura) {
+        this.jMenuCultura = jMenuCultura;
     }
 
-    public JMenuItem getjMenuCadastraUsuario() {
-        return jMenuCadastraUsuario;
+    public JMenuItem getjMenuUsuarios() {
+        return jMenuUsuarios;
     }
 
-    public void setjMenuCadastraUsuario(JMenuItem jMenuCadastraUsuario) {
-        this.jMenuCadastraUsuario = jMenuCadastraUsuario;
+    public void setjMenuUsuarios(JMenuItem jMenuUsuarios) {
+        this.jMenuUsuarios = jMenuUsuarios;
     }
 
-    public JButton getjButtonCadastrarCultura() {
-        return jButtonCadastrarCultura;
+    public JMenuItem getjMenuSair() {
+        return jMenuSair;
     }
 
-    public void setjButtonCadastrarCultura(JButton jButtonCadastrarCultura) {
-        this.jButtonCadastrarCultura = jButtonCadastrarCultura;
+    public void setjMenuSair(JMenuItem jMenuSair) {
+        this.jMenuSair = jMenuSair;
     }
 
-    public JButton getjButtonEditarVariaveis() {
-        return jButtonEditarVariaveis;
+    public JLabel getjLabelTest() {
+        return jLabelTest;
     }
 
-    public void setjButtonEditarVariaveis(JButton jButtonEditarVariaveis) {
-        this.jButtonEditarVariaveis = jButtonEditarVariaveis;
+    public void setjLabelTest(JLabel jLabelTest) {
+        this.jLabelTest = jLabelTest;
     }
 
-    public JButton getjButtonExlcuirCultura() {
-        return jButtonExlcuirCultura;
+    public JMenu getjMenu1() {
+        return jMenu1;
     }
 
-    public void setjButtonExlcuirCultura(JButton jButtonExlcuirCultura) {
-        this.jButtonExlcuirCultura = jButtonExlcuirCultura;
+    public void setjMenu1(JMenu jMenu1) {
+        this.jMenu1 = jMenu1;
     }
 
-    public JMenuItem getjMenuEditaExcluiUsuario() {
-        return jMenuEditaExcluiUsuario;
-    }
-
-    public void setjMenuEditaExcluiUsuario(JMenuItem jMenuEditaExcluiUsuario) {
-        this.jMenuEditaExcluiUsuario = jMenuEditaExcluiUsuario;
-    }
-
-    public JButton getjButtonSair() {
-        return jButtonSair;
-    }
     
     
-
+    
 }
-

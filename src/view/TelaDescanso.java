@@ -22,6 +22,10 @@ import java.util.logging.Logger;
  * @author banshee
  */
 public class TelaDescanso extends javax.swing.JFrame {
+    
+    private javax.swing.JMenu jMenuAcesso;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuLogin;
 
     
     public TelaDescanso() throws IOException {
@@ -29,12 +33,25 @@ public class TelaDescanso extends javax.swing.JFrame {
     }
     
     private void initComponents() throws IOException {
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuAcesso = new javax.swing.JMenu();
+        jMenuLogin = new javax.swing.JMenuItem();
+        
         JImagePanel panel = new JImagePanel(
                 loadImage("/home/banshee/Documents/IFBA/3-Semestre/POO/GUIGO/src/img/guigo-logo.png"));
  
         setPreferredSize(new Dimension(100, 100));
         setExtendedState(MAXIMIZED_BOTH);
         add(panel);
+        
+        jMenuAcesso.setText("Acesso");
+        jMenuLogin.setText("Log-in");
+        jMenuAcesso.add(jMenuLogin);
+        jMenuBar1.add(jMenuAcesso);
+        setJMenuBar(jMenuBar1);
+        
+        
+        
         pack();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
