@@ -17,6 +17,7 @@ import com.towel.swing.img.JImagePanel;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JMenuItem;
 /**
  *
  * @author banshee
@@ -73,5 +74,12 @@ public class TelaDescanso extends javax.swing.JFrame {
         return ImageIO.read(new File(file));
     }
 
+    public JMenuItem getjMenuLogin() {
+        return jMenuLogin;
+    }
+
+    public void setjMenuLogin(JMenuItem jMenuLogin) {
+        this.jMenuLogin = jMenuLogin;
+    }
     
 }

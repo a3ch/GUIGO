@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.Conexao;
 import view.TelaDescanso;
 import view.DialogTelaLogin;
 
@@ -27,6 +29,7 @@ public class ControleLogin implements ActionListener {
     private RNLogin rNLogin;
     private DialogTelaLogin telaLogin;
     private TelaDescanso telaDescanso;
+    private Connection conexao;
 
     /**
     * Método construtor.
@@ -37,15 +40,14 @@ public class ControleLogin implements ActionListener {
     
     public ControleLogin() throws IOException {
         this.telaDescanso = new TelaDescanso();
-        
-        
+        this.conexao = Conexao.getConexao();
+
+        this.telaDescanso.getjMenuLogin().addActionListener(this); 
         this.telaLogin = new DialogTelaLogin(telaDescanso, true); // Instancia a tela de Login e salva na variável "telaLogin".
         this.telaLogin.setLocationRelativeTo(telaDescanso);
         this.telaLogin.getjButtonEntrar().addActionListener(this); // Adiciona o botão "Cancelar" da tela de Login ao ActionListener.
-        this.rNLogin = new RNLogin(telaLogin, telaDescanso); // Passa a telaLogin para sua respectiva regra de negócio.
-        this.telaDescanso.setVisible(true);
+        this.rNLogin = new RNLogin(telaLogin, telaDescanso, conexao); // Passa a telaLogin para sua respectiva regra de negócio.
 
-        this.telaLogin.setVisible(true); // Faz a telaLogin ficar visível ao usuário.
         this.telaLogin.getjPasswordFieldSenha().addKeyListener(new java.awt.event.KeyAdapter() { // Monitoramento do campo de senha com um objeto KeyAdapter.
             
             /**
@@ -65,6 +67,11 @@ public class ControleLogin implements ActionListener {
                 }
             }
         });
+        this.telaDescanso.setVisible(true);
+       
+        this.telaLogin.setVisible(true); // Faz a telaLogin ficar visível ao usuário.
+     
+                
         
     }
      
@@ -77,7 +84,12 @@ public class ControleLogin implements ActionListener {
     */
     
     @Override
-    public void actionPerformed(ActionEvent e) { 
+    public void actionPerformed(ActionEvent e) {
+        
+        if (e.getSource() == telaDescanso.getjMenuLogin()) {
+            this.telaLogin.setVisible(true);
+        }
+        
         if (e.getSource() == telaLogin.getjButtonEntrar()) {
             try {
                 acesso();

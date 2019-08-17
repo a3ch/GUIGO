@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import view.TelaPrincipal;
@@ -19,9 +20,11 @@ import view.TelaPrincipal;
 public class ControlePrincipal implements ActionListener {
     /**
      * @param telaPrincipal
+     * @param tipo
      */
     private TelaPrincipal telaPrincipal;
-    private String tipo;
+    private Connection conexao;
+    private int tipo;
     
     /**
      * Método construtor.
@@ -33,11 +36,13 @@ public class ControlePrincipal implements ActionListener {
      * @since 0.1
      */
 
-    public ControlePrincipal(String tipo) throws IOException {
+    public ControlePrincipal(int tipo, Connection conexao) throws IOException {
         telaPrincipal = new TelaPrincipal();
         
+        this.conexao = conexao;
         this.tipo = tipo;
         this.verificarTipo();
+        System.out.println(tipo);
         
         // Teste da implementação de Threads
         new Thread(t1).start();
@@ -70,11 +75,11 @@ public class ControlePrincipal implements ActionListener {
         
         // Cadastro cultura
         if (e.getSource() == telaPrincipal.getjMenuCultura()) {
-            new ControleCadastroCultura(telaPrincipal);
+            new ControleCadastroCultura(telaPrincipal, this.conexao);
         }
         // Cadastro usuario
         if (e.getSource() == telaPrincipal.getjMenuUsuarios()) {
-            new ControleCadastroUsuario(telaPrincipal);
+            new ControleCadastroUsuario(telaPrincipal, this.conexao);
         }
         /*
         //Excluir
@@ -99,13 +104,14 @@ public class ControlePrincipal implements ActionListener {
     }
     
     private void verificarTipo() {
-        if (tipo.equals("tec")) {
-            this.telaPrincipal.getjMenu1().setText("Tecnico");
-            this.telaPrincipal.getjMenuUsuarios().hide();
-        }
-        
-        if (tipo.equals("op")) {
-            this.telaPrincipal.getjMenu1().hide();
+        switch(tipo) {
+            case 1:
+                this.telaPrincipal.getjMenu1().setText("Tecnico");
+                this.telaPrincipal.getjMenuUsuarios().hide();
+                break;
+            case 2:
+                this.telaPrincipal.getjMenu1().hide();
+                break;
         }
     }
     

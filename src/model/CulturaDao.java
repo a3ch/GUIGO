@@ -20,18 +20,17 @@ public class CulturaDao {
     public void inserir(Cultura cultura){
 
         if(!buscar(cultura)){
-            String sql = "insert into TbCultura (codCultura,nomeCultura,variedade,cicloEmDias,diasGerminacao,diasBercario,diasEngorda) values (?,?,?,?,?,?,?)";
+            String sql = "insert into TbCulturas (nomeCultura,variedade,cicloEmDias,diasGerminacao,diasBercario,diasEngorda) values (?,?,?,?,?,?)";
         
             PreparedStatement pst;
             try {
                 pst = conexao.prepareStatement(sql);
-                pst.setInt(1, cultura.getCodCultura());
-                pst.setString(2, cultura.getNomeCultura());
-                pst.setString(3, cultura.getVariedade());
-                pst.setInt(4, cultura.getCicloEmDias());
-                pst.setInt(5, cultura.getDiasGerminacao());
-                pst.setInt(6, cultura.getDiasBercario());
-                pst.setInt(7, cultura.getDiasEngorda());
+                pst.setString(1, cultura.getNomeCultura());
+                pst.setString(2, cultura.getVariedade());
+                pst.setInt(3, cultura.getCicloEmDias());
+                pst.setInt(4, cultura.getDiasGerminacao());
+                pst.setInt(5, cultura.getDiasBercario());
+                pst.setInt(6, cultura.getDiasEngorda());
                 pst.execute();
                 pst.close();
             } catch (SQLException ex) {
@@ -48,10 +47,10 @@ public class CulturaDao {
     
     public boolean excluir(Cultura cultura) {
         
-        String sql = "delete from TbCultura where codCultura = ?";
+        String sql = "delete from TbCulturas where codCultura = ?";
         boolean result = false;
                 
-        if(!buscar(cultura)){
+        if(buscar(cultura)){
             try {
                 PreparedStatement pst = conexao.prepareStatement(sql);
                 pst.setInt(1, cultura.getCodCultura());
@@ -71,17 +70,18 @@ public class CulturaDao {
     }
     
     public void alterar(Cultura cultura) {
-        String sql = "update TbCultura set nomeCultura = ? , variedade = ?, cicloEmDias = ?, diasGerminacao = ?, diasBercario = ?, diasEngorda = ? where codCultura = ?";
+        String sql = "update TbCulturas set nomeCultura = ? , variedade = ?, cicloEmDias = ?, diasGerminacao = ?, diasBercario = ?, diasEngorda = ? where codCultura = ?";
 
         if(buscar(cultura)){
             try {
                 PreparedStatement pst = conexao.prepareStatement(sql);
                 pst.setString(1, cultura.getNomeCultura());
                 pst.setString(2, cultura.getVariedade());
-                pst.setInt(3, cultura.cicloEmDias);
-                pst.setInt(4, cultura.diasGerminacao);
-                pst.setInt(5, cultura.diasBercario);
-                pst.setInt(6, cultura.diasEngorda);
+                pst.setInt(3, cultura.getCicloEmDias());
+                pst.setInt(4, cultura.getDiasGerminacao());
+                pst.setInt(5, cultura.getDiasBercario());
+                pst.setInt(6, cultura.getDiasEngorda());
+                pst.setInt(7, cultura.getCodCultura());
                 pst.execute();
                 pst.close();                
             } catch (SQLException ex) {
@@ -97,7 +97,7 @@ public class CulturaDao {
     
     private boolean buscar(Cultura cultura) {
       
-        String sql = "select * from TbCultura where codCultura like ?";
+        String sql = "select * from TbCulturas where codCultura like ?";
         Cultura culturaBusca = new Cultura();
 
         PreparedStatement pst;
@@ -127,7 +127,7 @@ public class CulturaDao {
     }
     
     public Cultura pesquisar(int codCultura){
-        String sql = "select * from TbCultura where codCultura = ?";
+        String sql = "select * from TbCulturas where codCultura = ?";
         Cultura cultura = new Cultura();
 
         PreparedStatement pst;
@@ -158,7 +158,7 @@ public class CulturaDao {
     
     public ArrayList<Cultura> listar() {
         
-        String sql = "select * from TbCultura order by codCultura";
+        String sql = "select * from TbCulturas order by codCultura";
         
         ArrayList<Cultura> lista = new ArrayList<>();
         

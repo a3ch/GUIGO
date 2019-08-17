@@ -58,7 +58,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jPanel3.setBackground(new java.awt.Color(254, 146, 38));
 

@@ -20,7 +20,7 @@ public class Conexao {
        
             if(conexao == null){
                 try {
-                    conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_aula","root","");
+                    conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/GUIGO","root","");
                 } catch(SQLException e) {
                     JOptionPane.showMessageDialog(null, "Erro de Conexão!");
                     throw new RuntimeException(e);

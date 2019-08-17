@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import view.TelaPrincipal;
 import view.DialogTelaCadastroUsuario;
 
@@ -22,6 +23,7 @@ public class ControleCadastroUsuario implements ActionListener {
     private DialogTelaCadastroUsuario telaCadastroUsuario;
     private TelaPrincipal telaPrincipal;
     private RNCadastroUsuario rRUsuario;
+    private Connection conexao;
      /**
      * Método construtor.
      * Recebe um objeto da classe TelaPrincipal.
@@ -30,7 +32,7 @@ public class ControleCadastroUsuario implements ActionListener {
      * @param telaPrincipal É a tela principal já criada.
      */
 
-    public ControleCadastroUsuario(TelaPrincipal telaPrincipal) {
+    public ControleCadastroUsuario(TelaPrincipal telaPrincipal, Connection conexao) {
         this.telaPrincipal = telaPrincipal; // Faz associação da TelaPrincipal recebida para o objeto que criado nessa classe.
         this.telaCadastroUsuario = new DialogTelaCadastroUsuario(telaPrincipal, true); // Instancia a nova tela relativa a TelaPrincipal.
         this.telaCadastroUsuario.setLocationRelativeTo(telaPrincipal); // Define a localização da tela relativa à mãe (TelaPrincipal).
@@ -41,7 +43,8 @@ public class ControleCadastroUsuario implements ActionListener {
         this.telaCadastroUsuario.getjButtonEditar().addActionListener(this);
         this.telaCadastroUsuario.getjButtonExcluir().addActionListener(this);
         
-        this.rRUsuario = new RNCadastroUsuario(telaCadastroUsuario);
+        this.conexao = conexao;
+        this.rRUsuario = new RNCadastroUsuario(telaCadastroUsuario, this.conexao);
         
         this.telaCadastroUsuario.setVisible(true); // Faz a telaCadastroCultura ficar visível ao usuário.
     }
@@ -76,11 +79,28 @@ public class ControleCadastroUsuario implements ActionListener {
             this.salvar();
         }
         
+        // Excluir
+        if (e.getSource() == telaCadastroUsuario.getjButtonExcluir()) {
+            this.excluir();
+        }
+        
+        // Alterar
+        if (e.getSource() == telaCadastroUsuario.getjButtonEditar()) {
+            this.editar();
+        }
+        
     }
     
+    private void editar() {
+        this.rRUsuario.editar();
+    }
     
     private void salvar() {
         this.rRUsuario.salvar();
+    }
+    
+    private void excluir() {
+        this.rRUsuario.excluir();
     }
     
     private void limpar() {

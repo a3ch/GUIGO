@@ -8,13 +8,15 @@ package view;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author banshee
  */
 public class DialogTelaCadastroCultura extends javax.swing.JDialog {
-
+    
+    private DefaultTableModel modelo;
     /**
      * Creates new form DialogTelaCadastroCultura
      */
@@ -22,8 +24,17 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
         super(parent, modal);
         this.setTitle("Cadastro de Cultura");
         initComponents();
+        this.modelo = (DefaultTableModel)jTableCulturas.getModel();
     }
 
+    public DefaultTableModel getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(DefaultTableModel modelo) {
+        this.modelo = modelo;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,11 +141,11 @@ public class DialogTelaCadastroCultura extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Nome", "Variedade", "Ciclo", "Câmara de Germinação", "Berçário", "Engorda"
+                "ID", "Nome", "Variedade", "Ciclo", "Câmara de Germinação", "Berçário", "Engorda"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

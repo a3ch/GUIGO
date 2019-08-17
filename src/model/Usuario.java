@@ -12,12 +12,17 @@ package model;
 public class Usuario {
     /**
      * @param id
+     * @param tipo
      * @param login
      * @param senha
      */  
     private int id;
+    private int tipo;
     private String login;
     private String senha;
+    private String fone;
+    private String email;
+    private String nome;
 
     /**
      * Exibe a identificação do usuário.
@@ -67,5 +72,47 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    /**
+     * Exibe o tipo do usuário.
+     * 
+     * @return Retorna um int tipo de um objeto usuário.
+     */
+    public int getTipo() {
+        return tipo;
+    }
+    /**
+     * Envia o tipo para atribuir a um objeto usuário.
+     * 
+     * @param tipo Esta servirá para identificar qual é o nivel do usuario.
+     */
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getFone() {
+        return fone;
+    }
+
+    public void setFone(String fone) {
+        this.fone = fone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
+    
     
 }
