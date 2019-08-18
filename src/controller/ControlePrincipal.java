@@ -105,11 +105,11 @@ public class ControlePrincipal implements ActionListener {
     
     private void verificarTipo() {
         switch(tipo) {
-            case 1:
+            case 2:
                 this.telaPrincipal.getjMenu1().setText("Tecnico");
                 this.telaPrincipal.getjMenuUsuarios().hide();
                 break;
-            case 2:
+            case 1:
                 this.telaPrincipal.getjMenu1().hide();
                 break;
         }
