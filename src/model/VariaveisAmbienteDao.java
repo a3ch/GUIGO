@@ -7,48 +7,55 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import java.sql.Timestamp;
 
 /**
  *
  * @author Gustavo Rodrigues
  */
 public class VariaveisAmbienteDao {
-    private final Connection conexao;    
+    private final Connection conexao; 
+    private Date d;
+    private Timestamp ts;
 
     public VariaveisAmbienteDao(Connection conexao) {
         this.conexao = conexao;
+        
     }
     
     public void inserir(VariaveisAmbiente va){
 
         if(!buscar(va)){
-            String sql = "insert into TbDataRealTime (codCultura,data,temperatura,umidade,luminosidade) values (?,?,?,?,?)";
+            String sql = "insert into TbDataRealTime (dataRT,temperatura,umidade,luminosidade) values (?,?,?,?)";
         
             PreparedStatement pst;
             try {
+                d = new Date(System.currentTimeMillis());
+                ts = new Timestamp(d.getTime());
                 pst = conexao.prepareStatement(sql);
-                pst.setInt(1, va.getCodCultura());
-                pst.setDate(2, (Date) va.getDate()); // O objeto java.util.Date não é compatível com java.sql.Date, por isso o cast "(Date)"
-                pst.setFloat(3, va.getTemperatura());
-                pst.setFloat(4, va.getUmidade());
-                pst.setFloat(5, va.getLuminosidade());
+                pst.setTimestamp(1, ts);
+                pst.setFloat(2, va.getTemperatura());
+                pst.setFloat(3, va.getUmidade());
+                pst.setFloat(4, va.getLuminosidade());
                 pst.execute();
                 pst.close();
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Não foi possivel inserir.");
+                //System.out.println("Não foi possivel inserir.");
                 System.out.println(ex);
-            } 
-            JOptionPane.showMessageDialog(null, "Registro inserido com sucesso."); // Podemos omitir os avisos para esse Dao tranquilamente
+            }
+            //System.out.println("Registro inserido com sucesso.");
+             // Podemos omitir os avisos para esse Dao tranquilamente
         }
         else{
-            JOptionPane.showMessageDialog(null, "Não foi possivel inserir. Registro já cadastrado.");            
+            //System.out.println("Não foi possivel inserir. Registro já cadastrado.");            
         }
     }
     
     // Busca no Banco de Dados pelo campo de DATA.
+    
     private boolean buscar(VariaveisAmbiente va) {
       
-        String sql = "select * from TbDataRealTime where data like ?";
+        String sql = "select * from TbDataRealTime where dataRT like ?";
         VariaveisAmbiente vaBusca = new VariaveisAmbiente();
 
         PreparedStatement pst;
@@ -56,10 +63,10 @@ public class VariaveisAmbienteDao {
         
         try {    
             pst = conexao.prepareStatement(sql);
-            pst.setDate(1,(Date)va.getDate());
+            pst.setTimestamp(1, va.getDate());
             rs = pst.executeQuery();
             while(rs.next()){      
-                vaBusca.setCodCultura(rs.getInt("codCultura"));
+                vaBusca.setDate(rs.getTimestamp("dataRT"));
                 vaBusca.setTemperatura(rs.getFloat("temperatura"));
                 vaBusca.setUmidade(rs.getFloat("umidade"));
                 vaBusca.setLuminosidade(rs.getFloat("luminosidade"));
@@ -67,13 +74,13 @@ public class VariaveisAmbienteDao {
             rs.close();
             pst.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel buscar.");
+            //JOptionPane.showMessageDialog(null, "Não foi possivel buscar.");
             System.out.println(ex);
         }
         
         return(vaBusca.getCodCultura()>0);
     }
-    
+    /*
     // Pesquisa por DATA e por codCultura. Lembrar de fazer o cast do java.util.Date para o java.sql.Date antes de enviar o parâmetro para pesquisa.
     public VariaveisAmbiente pesquisar(Date data, int codCultura){
         String sql = "select * from TbCultura where data = ? and codCultura = ?"; // Não sei se esse comando em sql funciona.
@@ -103,10 +110,10 @@ public class VariaveisAmbienteDao {
         
         return vaPesquisa;
     }
-        
+    */    
     public ArrayList<VariaveisAmbiente> listar() {
         
-        String sql = "select * from TbRealTimeData order by codCultura, data";
+        String sql = "select * from TbDataRealTime order by dataRT desc limit 1";
         
         ArrayList<VariaveisAmbiente> lista = new ArrayList<>();
         
@@ -117,8 +124,7 @@ public class VariaveisAmbienteDao {
             rs = pst.executeQuery();
             while(rs.next()){
                 VariaveisAmbiente va = new VariaveisAmbiente();
-                va.setCodCultura(rs.getInt("codCultura"));
-                va.setDate(rs.getDate("data"));
+                va.setDate(rs.getTimestamp("dataRT"));
                 va.setTemperatura(rs.getFloat("temperatura"));
                 va.setUmidade(rs.getFloat("umidade"));
                 va.setLuminosidade(rs.getFloat("luminosidade"));
@@ -127,7 +133,6 @@ public class VariaveisAmbienteDao {
             rs.close();
             pst.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possivel listar.");
             System.out.println(ex);
         }
         

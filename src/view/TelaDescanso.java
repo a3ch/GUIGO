@@ -18,6 +18,7 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
+import java.net.URL;
 /**
  *
  * @author banshee
@@ -37,9 +38,9 @@ public class TelaDescanso extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAcesso = new javax.swing.JMenu();
         jMenuLogin = new javax.swing.JMenuItem();
-                
+        
         JImagePanel panel = new JImagePanel(
-                loadImage("./src/img/guigo-logo.png"));
+                loadImage(getClass().getResource("/img/guigo-logo.png")));
  
         setPreferredSize(new Dimension(100, 100));
         setExtendedState(MAXIMIZED_BOTH);
@@ -70,9 +71,8 @@ public class TelaDescanso extends javax.swing.JFrame {
         });
     }
  
-    private static BufferedImage loadImage(String file) throws IOException {
-        String path = new File(file).getCanonicalPath();
-        return ImageIO.read(new File(path));
+    private static BufferedImage loadImage(URL file) throws IOException {
+        return ImageIO.read(file);
     }
 
     public JMenuItem getjMenuLogin() {

@@ -60,6 +60,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItemVariaveisAmbiente = new javax.swing.JMenuItem();
         jMenuCultura = new javax.swing.JMenuItem();
         jMenuUsuarios = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -194,6 +195,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Administrador");
 
+        jMenuItemVariaveisAmbiente.setText("Variaveis de Ambiente");
+        jMenu1.add(jMenuItemVariaveisAmbiente);
+
         jMenuCultura.setText("Cultura");
         jMenuCultura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +253,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuariosActionPerformed
         // TODO add your handling code here:
-
+ 
     }//GEN-LAST:event_jMenuUsuariosActionPerformed
 
     /**
@@ -306,6 +310,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuCultura;
+    private javax.swing.JMenuItem jMenuItemVariaveisAmbiente;
     private javax.swing.JMenuItem jMenuSair;
     private javax.swing.JMenuItem jMenuUsuarios;
     private javax.swing.JPanel jPanel1;
@@ -354,7 +359,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.jMenu1 = jMenu1;
     }
 
-    
-    
+    public JMenuItem getjMenuItemVariaveisAmbiente() {
+        return jMenuItemVariaveisAmbiente;
+    }
+
+    public void setjMenuItemVariaveisAmbiente(JMenuItem jMenuItemVariaveisAmbiente) {
+        this.jMenuItemVariaveisAmbiente = jMenuItemVariaveisAmbiente;
+    }
+
     
 }

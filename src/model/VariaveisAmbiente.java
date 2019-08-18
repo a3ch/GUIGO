@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -17,19 +18,18 @@ public class VariaveisAmbiente {
     */
     
     int codCultura;
-    Date data;
+    Timestamp data;
     float temperatura;
     float umidade;
     float luminosidade;
 
-    public VariaveisAmbiente(Cultura cultura, float temperatura, float umidade, float luminosidade) {
+    public VariaveisAmbiente(Cultura cultura, float temperatura, float umidade, float luminosidade, Timestamp data) {
         this.codCultura = cultura.getCodCultura();
         this.temperatura = temperatura;
         this.umidade = umidade;
         this.luminosidade = luminosidade;
         
-        Calendar calendario = Calendar.getInstance();
-        this.data = calendario.getTime();
+        this.data = data;
     }
     
     //Se faz necessário um cosntrutor sem parametros para a classe VariaveisAmbienteDao.
@@ -42,7 +42,7 @@ public class VariaveisAmbiente {
         return dtHora.format(data);
     }
     
-    public Date getDate() {
+    public Timestamp getDate() {
         return data;
     }
 
@@ -66,7 +66,7 @@ public class VariaveisAmbiente {
         this.codCultura = codCultura;
     }
 
-    public void setDate(Date data) {
+    public void setDate(Timestamp data) {
         this.data = data;
     }
 

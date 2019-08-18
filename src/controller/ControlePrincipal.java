@@ -4,9 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import view.TelaPrincipal;
+import model.VariaveisAmbienteDao;
+import model.VariaveisAmbiente;
 
 /**
  * Classe utilizada para criar a tela principal.
@@ -26,6 +29,12 @@ public class ControlePrincipal implements ActionListener {
     private Connection conexao;
     private int tipo;
     
+    private VariaveisAmbienteDao dao;
+    private int umidade, luminosidade, temperatura;
+    private Random random;
+
+
+    
     /**
      * Método construtor.
      * Este método cria uma instancia da TelaPrincipal() e armazena na variável local.
@@ -42,7 +51,9 @@ public class ControlePrincipal implements ActionListener {
         this.conexao = conexao;
         this.tipo = tipo;
         this.verificarTipo();
-        System.out.println(tipo);
+        
+        this.random = new Random();
+        this.dao = new VariaveisAmbienteDao(this.conexao);
         
         // Teste da implementação de Threads
         new Thread(t1).start();
@@ -54,6 +65,7 @@ public class ControlePrincipal implements ActionListener {
         telaPrincipal.getjMenuEditaExcluiUsuario().addActionListener(this); // Escuta o botão de editar/excluir usuarios
         telaPrincipal.getjButtonSair().addActionListener(this);
         */
+        telaPrincipal.getjMenuItemVariaveisAmbiente().addActionListener(this);
         telaPrincipal.getjMenuCultura().addActionListener(this); // Ecustar o botão de cadastros de culturas
         telaPrincipal.getjMenuUsuarios().addActionListener(this); // Escuta o botão de cadastros de usuario
         telaPrincipal.getjMenuSair().addActionListener(this); // Escuta o botão de sair
@@ -80,6 +92,11 @@ public class ControlePrincipal implements ActionListener {
         // Cadastro usuario
         if (e.getSource() == telaPrincipal.getjMenuUsuarios()) {
             new ControleCadastroUsuario(telaPrincipal, this.conexao);
+        }
+        
+        // Variaveis de Ambiente
+        if (e.getSource() == telaPrincipal.getjMenuItemVariaveisAmbiente()) {
+            new ControleVariaveisAmbiente(telaPrincipal, this.conexao);
         }
         /*
         //Excluir
@@ -120,8 +137,16 @@ public class ControlePrincipal implements ActionListener {
         @Override
         public void run() {
             try {
+                VariaveisAmbiente va = new VariaveisAmbiente();
                 for(int i = 0; i < 100; i++) {
-                    telaPrincipal.getjLabelTest().setText(Integer.toString(i));
+                    //gera temperatura umidade e luminosidade 
+                    temperatura = random.nextInt(100);
+                    umidade = random.nextInt(100);
+                    luminosidade =  random.nextInt(100);
+                    va.setLuminosidade(luminosidade);
+                    va.setTemperatura(temperatura);
+                    va.setUmidade(umidade);
+                    dao.inserir(va);
                     Thread.sleep(1000);
                 }
             } catch (Exception e) {}

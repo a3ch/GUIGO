@@ -2,8 +2,9 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import view.TelaPrincipal;
-import view.DialogEditarVariaveisAmbiente;
+import view.DialogTelaVariaveisAmbiente;
 
 /**
  * Classe utilizada para criar a tela de controle das variáveis de ambiente.
@@ -19,8 +20,11 @@ public class ControleVariaveisAmbiente implements ActionListener {
      * @param telaEditarVariaveisAmbiente
      * @param telaPrincipal
      */
-    private DialogEditarVariaveisAmbiente telaEditarVariaveisAmbiente;
+    private DialogTelaVariaveisAmbiente telaVariaveisAmbiente;
     private TelaPrincipal telaPrincipal;
+    private RNVariaveisAmbiente rNVariaveisAmbiente;
+    
+    private Connection conexao;
     
      /**
      * Método construtor.
@@ -30,12 +34,14 @@ public class ControleVariaveisAmbiente implements ActionListener {
      * @param telaPrincipal É a tela principal já criada.
      */
 
-    public ControleVariaveisAmbiente(TelaPrincipal telaPrincipal) {
+    public ControleVariaveisAmbiente(TelaPrincipal telaPrincipal, Connection conexao) {
         this.telaPrincipal = telaPrincipal;
-        this.telaEditarVariaveisAmbiente = new DialogEditarVariaveisAmbiente(telaPrincipal, true);
-        this.telaEditarVariaveisAmbiente.getjButtonCancelar().addActionListener(this);
-        this.telaEditarVariaveisAmbiente.setLocationRelativeTo(telaPrincipal);
-        this.telaEditarVariaveisAmbiente.setVisible(true);
+        this.conexao = conexao;
+        this.telaVariaveisAmbiente = new DialogTelaVariaveisAmbiente(telaPrincipal, true);
+        this.rNVariaveisAmbiente = new RNVariaveisAmbiente(telaVariaveisAmbiente, this.conexao);
+        this.telaVariaveisAmbiente.getjButtonFechar().addActionListener(this);
+        this.telaVariaveisAmbiente.setLocationRelativeTo(telaPrincipal);
+        this.telaVariaveisAmbiente.setVisible(true);
     }
     
     /**
@@ -48,8 +54,8 @@ public class ControleVariaveisAmbiente implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == telaEditarVariaveisAmbiente.getjButtonCancelar()) {
-            telaEditarVariaveisAmbiente.dispose();
+        if (e.getSource() == telaVariaveisAmbiente.getjButtonFechar()) {
+            telaVariaveisAmbiente.dispose();
         }
     }
     

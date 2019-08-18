@@ -10,11 +10,11 @@ package model;
  */
 public class Main {
     public static void main(String args[]) {
-        Cultura c = new Cultura(01, "Alface", "Roxo", 60, 7, 20, 30);
+        //Cultura c = new Cultura(01, "Alface", "Roxo", 60, 7, 20, 30);
         
-        VariaveisAmbiente va = new VariaveisAmbiente(c, 30, 40, 80);
+        //VariaveisAmbiente va = new VariaveisAmbiente(c, 30, 40, 80);
         
-        System.out.println(va.getDataCompletaFormatada());
+        //System.out.println(va.getDataCompletaFormatada());
         
         
     }

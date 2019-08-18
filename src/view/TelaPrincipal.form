@@ -9,6 +9,11 @@
             <Property name="text" type="java.lang.String" value="Administrador"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemVariaveisAmbiente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Variaveis de Ambiente"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuCultura">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cultura"/>
