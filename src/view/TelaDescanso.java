@@ -15,6 +15,7 @@ import javax.swing.JFrame;
  
 import com.towel.swing.img.JImagePanel;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JMenuItem;
@@ -32,6 +33,7 @@ public class TelaDescanso extends javax.swing.JFrame {
     
     public TelaDescanso() throws IOException {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/icons8-organic-food-64.png")));
     }
     
     private void initComponents() throws IOException {
@@ -51,7 +53,9 @@ public class TelaDescanso extends javax.swing.JFrame {
         jMenuAcesso.add(jMenuLogin);
         jMenuBar1.add(jMenuAcesso);
         setJMenuBar(jMenuBar1);
-        
+        setTitle("GUIGO");
+        setName("GUIGO"); // NOI18N
+     
         
         
         pack();

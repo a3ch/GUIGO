@@ -22,13 +22,18 @@ public class VariaveisAmbiente {
     float temperatura;
     float umidade;
     float luminosidade;
+    float ph;
+    float oxigenioDissolvido;
+    float condutividadeEletrica;
 
-    public VariaveisAmbiente(Cultura cultura, float temperatura, float umidade, float luminosidade, Timestamp data) {
+    public VariaveisAmbiente(Cultura cultura, float temperatura, float umidade, float luminosidade, Timestamp data, float ph, float oxigenioDissolvido, float condutividadeEletrica) {
         this.codCultura = cultura.getCodCultura();
         this.temperatura = temperatura;
         this.umidade = umidade;
         this.luminosidade = luminosidade;
-        
+        this.ph = ph;
+        this.oxigenioDissolvido = oxigenioDissolvido;
+        this.condutividadeEletrica = condutividadeEletrica;
         this.data = data;
     }
     
@@ -80,6 +85,30 @@ public class VariaveisAmbiente {
 
     public void setLuminosidade(float luminosidade) {
         this.luminosidade = luminosidade;
+    }
+
+    public float getPh() {
+        return ph;
+    }
+
+    public void setPh(float ph) {
+        this.ph = ph;
+    }
+
+    public float getOxigenioDissolvido() {
+        return oxigenioDissolvido;
+    }
+
+    public void setOxigenioDissolvido(float oxigenioDissolvido) {
+        this.oxigenioDissolvido = oxigenioDissolvido;
+    }
+
+    public float getCondutividadeEletrica() {
+        return condutividadeEletrica;
+    }
+
+    public void setCondutividadeEletrica(float condutividadeEletrica) {
+        this.condutividadeEletrica = condutividadeEletrica;
     }
     
     

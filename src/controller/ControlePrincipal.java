@@ -30,7 +30,7 @@ public class ControlePrincipal implements ActionListener {
     private int tipo;
     
     private VariaveisAmbienteDao dao;
-    private int umidade, luminosidade, temperatura;
+    private int umidade, luminosidade, temperatura, ph, o2Dissolvido, condutividade;
     private Random random;
 
 
@@ -123,11 +123,10 @@ public class ControlePrincipal implements ActionListener {
     private void verificarTipo() {
         switch(tipo) {
             case 2:
-                this.telaPrincipal.getjMenu1().setText("Tecnico");
                 this.telaPrincipal.getjMenuUsuarios().hide();
                 break;
             case 1:
-                this.telaPrincipal.getjMenu1().hide();
+                this.telaPrincipal.getjMenuCadastros().hide();
                 break;
         }
     }
@@ -143,9 +142,21 @@ public class ControlePrincipal implements ActionListener {
                     temperatura = random.nextInt(100);
                     umidade = random.nextInt(100);
                     luminosidade =  random.nextInt(100);
+                    ph = random.nextInt(15);
+                    o2Dissolvido = random.nextInt(100);
+                    condutividade = random.nextInt(100);
+                    telaPrincipal.getjLabelTemperatura().setText(Integer.toString(temperatura) + ".0°C");
+                    telaPrincipal.getjLabelUmidade().setText(Integer.toString(umidade) + ".0%");
+                    telaPrincipal.getjLabelLuminosidade().setText(Integer.toString(luminosidade) + ".0%");
+                    telaPrincipal.getjLabelPh().setText(Integer.toString(ph) + ".0");
+                    telaPrincipal.getjLabelOD().setText(Integer.toString(o2Dissolvido) + ".0%");
+                    telaPrincipal.getjLabelCondutividadeEletrica().setText(Integer.toString(condutividade) + ".0%");
                     va.setLuminosidade(luminosidade);
                     va.setTemperatura(temperatura);
                     va.setUmidade(umidade);
+                    va.setPh(ph);
+                    va.setOxigenioDissolvido(o2Dissolvido);
+                    va.setCondutividadeEletrica(condutividade);
                     dao.inserir(va);
                     Thread.sleep(1000);
                 }

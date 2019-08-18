@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.security.Timestamp;
 import java.sql.Connection;
 import java.util.ArrayList;
 import model.VariaveisAmbienteDao;
@@ -31,7 +32,7 @@ public class RNVariaveisAmbiente {
             public void run() {
                 try {
                     while(true) {
-                        listar();
+                        pesquisaInsereTabela();
                         Thread.sleep(2000);
                     }
                 } catch (Exception e) {}
@@ -53,7 +54,10 @@ public class RNVariaveisAmbiente {
             adicionaTabela(listaVA.get(i).getDate(),
                            listaVA.get(i).getTemperatura(),
                            listaVA.get(i).getUmidade(),
-                           listaVA.get(i).getLuminosidade());
+                           listaVA.get(i).getLuminosidade(),
+                           listaVA.get(i).getPh(),
+                           listaVA.get(i).getOxigenioDissolvido(),
+                           listaVA.get(i).getCondutividadeEletrica());
         }      
     }
     
@@ -65,6 +69,15 @@ public class RNVariaveisAmbiente {
         int linhas = this.telaVariaveisAmbiente.getModelo().getRowCount();
         for(int i=0;i<linhas;i++){
             this.telaVariaveisAmbiente.getModelo().removeRow(0);
+        }
+    }
+    
+    private void pesquisaInsereTabela() {
+        
+        ArrayList<VariaveisAmbiente> va = this.dao.listar();
+        
+        if (this.telaVariaveisAmbiente.getModelo().getRowCount() == 0 || !this.telaVariaveisAmbiente.getModelo().getValueAt(this.telaVariaveisAmbiente.getModelo().getRowCount() - 1, 0).equals(va.get(0).getDate())) {
+            listaDados(va);
         }
     }
     

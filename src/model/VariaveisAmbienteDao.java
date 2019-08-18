@@ -23,11 +23,10 @@ public class VariaveisAmbienteDao {
         
     }
     
-    public void inserir(VariaveisAmbiente va){
+    public void inserir(VariaveisAmbiente va) throws InterruptedException{
 
         if(!buscar(va)){
-            String sql = "insert into TbDataRealTime (dataRT,temperatura,umidade,luminosidade) values (?,?,?,?)";
-        
+            String sql = "insert into TbDataRealTime (dataRT,temperatura,umidade,luminosidade, ph, o2Dissolvido, condutividadeElet) values (?,?,?,?,?,?,?)";
             PreparedStatement pst;
             try {
                 d = new Date(System.currentTimeMillis());
@@ -37,6 +36,9 @@ public class VariaveisAmbienteDao {
                 pst.setFloat(2, va.getTemperatura());
                 pst.setFloat(3, va.getUmidade());
                 pst.setFloat(4, va.getLuminosidade());
+                pst.setFloat(5, va.getPh());
+                pst.setFloat(6, va.getOxigenioDissolvido());
+                pst.setFloat(7, va.getCondutividadeEletrica());
                 pst.execute();
                 pst.close();
             } catch (SQLException ex) {
@@ -70,6 +72,9 @@ public class VariaveisAmbienteDao {
                 vaBusca.setTemperatura(rs.getFloat("temperatura"));
                 vaBusca.setUmidade(rs.getFloat("umidade"));
                 vaBusca.setLuminosidade(rs.getFloat("luminosidade"));
+                vaBusca.setPh(rs.getFloat("ph"));
+                vaBusca.setOxigenioDissolvido(rs.getFloat("o2Dissolvido"));
+                vaBusca.setCondutividadeEletrica(rs.getFloat("condutividadeElet"));
             }
             rs.close();
             pst.close();
@@ -128,6 +133,9 @@ public class VariaveisAmbienteDao {
                 va.setTemperatura(rs.getFloat("temperatura"));
                 va.setUmidade(rs.getFloat("umidade"));
                 va.setLuminosidade(rs.getFloat("luminosidade"));
+                va.setPh(rs.getFloat("ph"));
+                va.setOxigenioDissolvido(rs.getFloat("o2Dissolvido"));
+                va.setCondutividadeEletrica(rs.getFloat("condutividadeElet"));
                 lista.add(va);
             }
             rs.close();

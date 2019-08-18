@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JFrame;
  
 import com.towel.swing.img.JImagePanel;
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
@@ -33,6 +34,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public TelaPrincipal() throws IOException {
         initComponents();
         
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/icons8-organic-food-64.png")));
         setExtendedState(MAXIMIZED_BOTH); 
     }
 
@@ -47,31 +49,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabelTest = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabelTemperatura = new javax.swing.JLabel();
+        jLabelLuminosidade = new javax.swing.JLabel();
+        jLabelUmidade = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabelTest1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabelOD = new javax.swing.JLabel();
+        jLabelCondutividadeEletrica = new javax.swing.JLabel();
+        jLabelPh = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItemVariaveisAmbiente = new javax.swing.JMenuItem();
+        jMenuCadastros = new javax.swing.JMenu();
         jMenuCultura = new javax.swing.JMenuItem();
         jMenuUsuarios = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuItemVariaveisAmbiente = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabelTest.setLabelFor(jMenu1);
-        jLabelTest.setMaximumSize(new java.awt.Dimension(20, 20));
-        jLabelTest.setMinimumSize(new java.awt.Dimension(20, 20));
-        jLabelTest.setPreferredSize(new java.awt.Dimension(20, 20));
+        setTitle("GUIGO");
+        setName("GUIGO"); // NOI18N
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Luminosidade_50per.png"))); // NOI18N
 
@@ -79,35 +91,79 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Humidade_50per.png"))); // NOI18N
 
+        jLabel8.setText("Temperatura");
+
+        jLabel9.setText("Umidade");
+
+        jLabel10.setText("Luminosidade");
+
+        jLabelTemperatura.setBackground(new java.awt.Color(249, 166, 83));
+        jLabelTemperatura.setFont(jLabelTemperatura.getFont());
+        jLabelTemperatura.setText("00.0°C");
+
+        jLabelLuminosidade.setBackground(new java.awt.Color(249, 166, 83));
+        jLabelLuminosidade.setText("00.0%");
+
+        jLabelUmidade.setBackground(new java.awt.Color(249, 166, 83));
+        jLabelUmidade.setText("00.0%");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabelTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel4)
+                                .addGap(89, 89, 89))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGap(196, 196, 196)
+                                .addComponent(jLabel2)))
+                        .addGap(0, 20, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(20, 20, 20))))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabelTemperatura)))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel10))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabelUmidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelLuminosidade)
+                                .addGap(28, 28, 28)))))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelTest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTemperatura)
+                    .addComponent(jLabelLuminosidade)
+                    .addComponent(jLabelUmidade))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabelTest1.setLabelFor(jMenu1);
@@ -121,22 +177,58 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Os2_50per.png"))); // NOI18N
 
+        jLabel13.setText("<html><center>Condutividade<br>Elétrica</center></html>");
+
+        jLabel12.setText("<html><center>O2<br>dissolvido</center></html>");
+
+        jLabel11.setText("<html><center>Potencial<br>Hidrogênio</center></html>");
+
+        jLabelOD.setBackground(new java.awt.Color(249, 166, 83));
+        jLabelOD.setText("00.0%");
+
+        jLabelCondutividadeEletrica.setBackground(new java.awt.Color(249, 166, 83));
+        jLabelCondutividadeEletrica.setText("00.0%");
+
+        jLabelPh.setBackground(new java.awt.Color(249, 166, 83));
+        jLabelPh.setText("00.0");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel7)
-                .addGap(48, 48, 48)
-                .addComponent(jLabel5)
-                .addGap(20, 20, 20))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabelTest1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(37, 37, 37)
+                        .addComponent(jLabel7)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel5)
+                        .addGap(24, 24, 24))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabelTest1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(jLabelPh)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabelOD)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelCondutividadeEletrica)
+                                .addGap(42, 42, 42))))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,29 +238,43 @@ public class TelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
-                .addGap(3, 3, 3)
-                .addComponent(jLabelTest1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabelTest1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelPh)
+                        .addComponent(jLabelCondutividadeEletrica))
+                    .addComponent(jLabelOD))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(81, 81, 81)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(63, 63, 63)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(61, 216, 172));
@@ -184,19 +290,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(0, 489, Short.MAX_VALUE))
+                .addGap(0, 544, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 335, Short.MAX_VALUE))
+                .addGap(0, 359, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Administrador");
+        jMenu1.setText("Opções");
 
-        jMenuItemVariaveisAmbiente.setText("Variaveis de Ambiente");
-        jMenu1.add(jMenuItemVariaveisAmbiente);
+        jMenuCadastros.setText("Cadastro");
 
         jMenuCultura.setText("Cultura");
         jMenuCultura.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +309,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jMenuCulturaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuCultura);
+        jMenuCadastros.add(jMenuCultura);
 
         jMenuUsuarios.setText("Usuarios");
         jMenuUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -212,14 +317,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jMenuUsuariosActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuUsuarios);
+        jMenuCadastros.add(jMenuUsuarios);
+
+        jMenu1.add(jMenuCadastros);
+
+        jMenuItemVariaveisAmbiente.setText("Variaveis de Ambiente");
+        jMenu1.add(jMenuItemVariaveisAmbiente);
+
+        jMenuSair.setText("Sair");
+        jMenu1.add(jMenuSair);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText("Ajuda");
 
-        jMenuSair.setText("Sair");
-        jMenu2.add(jMenuSair);
+        jMenuItem1.setText("Sobre");
+        jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
 
@@ -239,6 +352,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        getAccessibleContext().setAccessibleDescription("GUIGO");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -298,18 +413,31 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabelTest;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelCondutividadeEletrica;
+    private javax.swing.JLabel jLabelLuminosidade;
+    private javax.swing.JLabel jLabelOD;
+    private javax.swing.JLabel jLabelPh;
+    private javax.swing.JLabel jLabelTemperatura;
     private javax.swing.JLabel jLabelTest1;
+    private javax.swing.JLabel jLabelUmidade;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenuItem jMenuCultura;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemVariaveisAmbiente;
     private javax.swing.JMenuItem jMenuSair;
     private javax.swing.JMenuItem jMenuUsuarios;
@@ -318,7 +446,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
-
+    
+    
+    
     public JMenuItem getjMenuCultura() {
         return jMenuCultura;
     }
@@ -343,14 +473,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.jMenuSair = jMenuSair;
     }
 
-    public JLabel getjLabelTest() {
-        return jLabelTest;
-    }
-
-    public void setjLabelTest(JLabel jLabelTest) {
-        this.jLabelTest = jLabelTest;
-    }
-
     public JMenu getjMenu1() {
         return jMenu1;
     }
@@ -365,6 +487,62 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void setjMenuItemVariaveisAmbiente(JMenuItem jMenuItemVariaveisAmbiente) {
         this.jMenuItemVariaveisAmbiente = jMenuItemVariaveisAmbiente;
+    }
+
+    public JMenu getjMenuCadastros() {
+        return jMenuCadastros;
+    }
+
+    public void setjMenuCadastros(JMenu jMenuCadastros) {
+        this.jMenuCadastros = jMenuCadastros;
+    }
+
+    public JLabel getjLabelCondutividadeEletrica() {
+        return jLabelCondutividadeEletrica;
+    }
+
+    public void setjLabelCondutividadeEletrica(JLabel jLabelCondutividadeEletrica) {
+        this.jLabelCondutividadeEletrica = jLabelCondutividadeEletrica;
+    }
+
+    public JLabel getjLabelLuminosidade() {
+        return jLabelLuminosidade;
+    }
+
+    public void setjLabelLuminosidade(JLabel jLabelLuminosidade) {
+        this.jLabelLuminosidade = jLabelLuminosidade;
+    }
+
+    public JLabel getjLabelOD() {
+        return jLabelOD;
+    }
+
+    public void setjLabelOD(JLabel jLabelOD) {
+        this.jLabelOD = jLabelOD;
+    }
+
+    public JLabel getjLabelPh() {
+        return jLabelPh;
+    }
+
+    public void setjLabelPh(JLabel jLabelPh) {
+        this.jLabelPh = jLabelPh;
+    }
+
+    public JLabel getjLabelTemperatura() {
+        return jLabelTemperatura;
+    }
+
+    public void setjLabelTemperatura(JLabel jLabelTemperatura) {
+        this.jLabelTemperatura = jLabelTemperatura;
+    }
+
+    public JLabel getjLabelUmidade() {
+        return jLabelUmidade;
+    }
+
+    public void setjLabelUmidade(JLabel jLabelUmidade) {
+        this.jLabelUmidade = jLabelUmidade;
     }
 
     
