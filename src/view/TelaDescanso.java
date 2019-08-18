@@ -37,9 +37,9 @@ public class TelaDescanso extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAcesso = new javax.swing.JMenu();
         jMenuLogin = new javax.swing.JMenuItem();
-        
+                
         JImagePanel panel = new JImagePanel(
-                loadImage("/home/banshee/Documents/IFBA/3-Semestre/POO/GUIGO/src/img/guigo-logo.png"));
+                loadImage("./src/img/guigo-logo.png"));
  
         setPreferredSize(new Dimension(100, 100));
         setExtendedState(MAXIMIZED_BOTH);
@@ -71,7 +71,8 @@ public class TelaDescanso extends javax.swing.JFrame {
     }
  
     private static BufferedImage loadImage(String file) throws IOException {
-        return ImageIO.read(new File(file));
+        String path = new File(file).getCanonicalPath();
+        return ImageIO.read(new File(path));
     }
 
     public JMenuItem getjMenuLogin() {
