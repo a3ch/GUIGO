@@ -36,10 +36,13 @@ INSERT INTO `TbCulturas` (`codCultura`, `nomeCultura`, `variedade`, `cicloEmDias
 --
 
 CREATE TABLE `TbDataRealTime` (
-  `dataRT` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `temperatura` float NOT NULL,
-  `UMIDADE` float NOT NULL,
-  `LUMINOSIDADE` float NOT NULL
+  dataRT timestamp not null,
+  temperatura float not null,
+  umidade float not null,
+  luminosidade float not null,
+  ph float not null,
+  o2Dissolvido float not null,
+  condutividadeElet float not null
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -104,7 +107,3 @@ ALTER TABLE `TbCulturas`
 ALTER TABLE `TbUsuario`
   MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
