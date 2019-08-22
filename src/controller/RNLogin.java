@@ -9,8 +9,7 @@ import view.TelaDescanso;
 import model.Usuario;
 
 /**
- * Classe utilizada para descrever a regra de negócio do login
- * Serve para aplicar restrições na hora do Login
+ * Classe utilizada para descrever a regra de negócio do login, aplicando restrições.
  * 
  * @author Caio Montenegro
  * @version 0.1
@@ -84,7 +83,11 @@ public class RNLogin {
             JOptionPane.showMessageDialog(telaLogin, "Acesso Negado");
         }*/
     }
-    
+    /**
+     * Método que verifica se os campos inseridos estão vazios.
+     * Retorna um sinal booleano para permitir ou negar acesso ao BD.
+     * @return Verdadeiro caso haja algum caractere digitado, falso caso os campos estiverem vazios. 
+     */
     private boolean validaCampos() {
         if (this.telaLogin.getjTextFieldUsuario().getText().equals("")) {
             return false;

@@ -19,6 +19,8 @@ public class ControleCadastroCultura implements ActionListener{
     /**
      * @param telaCadastroCultura
      * @param telaPrincipal
+     * @param rNCultura
+     * @param conexao
      */
     private DialogTelaCadastroCultura telaCadastroCultura;
     private TelaPrincipal telaPrincipal;
@@ -27,18 +29,20 @@ public class ControleCadastroCultura implements ActionListener{
     /**
      * Método construtor.
      * Recebe um objeto da classe TelaPrincipal.
+     * 
      * Deve ser utilizado para instanciar um objeto da classe JDialog e monitorar os botões da mesma (DialogTelaCadastroCultura).
      * 
+     * Cria um objeto representando a regra de negócio da classe cultura (RNCadastroCultura), enviando a própria tela e a conexão ao banco de dados. 
      * @param telaPrincipal É a tela principal já criada.
-     * @param conexao
+     * @param conexao Conexão atual com o sservidor.
      */
     public ControleCadastroCultura(TelaPrincipal telaPrincipal, Connection conexao) {
         this.telaPrincipal = telaPrincipal; 											// Cria associação da TelaPrincipal, para o novo objeto a ser criado. 
         this.conexao = conexao;
         this.telaCadastroCultura = new DialogTelaCadastroCultura(telaPrincipal, true);  // Instancia a nova tela relativa a TelaPrincipal. 
-        this.telaCadastroCultura.setLocationRelativeTo(telaPrincipal); 					// Define a localização da tela relativa à mãe (TelaPrincipal).        
+        this.telaCadastroCultura.setLocationRelativeTo(telaPrincipal); 			// Define a localização da tela relativa à mãe (TelaPrincipal).        
 
-        this.telaCadastroCultura.getjButtonFechar().addActionListener(this); 			// Adiciona o botão "Fechar" da nova tela ao ActionListener.
+        this.telaCadastroCultura.getjButtonFechar().addActionListener(this); // Adiciona o botão "Fechar" da nova tela ao ActionListener.
         this.telaCadastroCultura.getjButtonLimpar().addActionListener(this); // Adiciona o botão "Limpar" da nova tela ao ActionListener.
         this.telaCadastroCultura.getjButtonNovo().addActionListener(this);   // Adiciona o botão "Novo" da nova tela ao ActionListener.
         this.telaCadastroCultura.getjButtonSalvar().addActionListener(this); // Adiciona o botão "Salvar" da nova tela ao ActionListener.
@@ -61,6 +65,7 @@ public class ControleCadastroCultura implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // Fechar
+
         if (e.getSource() == telaCadastroCultura.getjButtonFechar()) { // Se o botão "Cancelar" for pressionado,
             this.telaCadastroCultura.dispose(); 						 // Exclui a telaCadastroCultura.
         }
@@ -90,23 +95,38 @@ public class ControleCadastroCultura implements ActionListener{
             this.excluir();
         }
     }
-    
+    /**
+     * Chama o método excluir da regra de negócio.
+     * Disponível apenas via botão (ActionPerformed).
+     */    
     private void excluir() {
         this.rNCultura.excluir();
     }
-    
+    /**
+     * Chama o método limpar (campos) da regra de negócio.
+     * Disponível apenas via botão (ActionPerformed).
+     */    
     private void limpar() {
         this.rNCultura.limpar();
     }
-    
+    /**
+     * Chama o método editar da regra de negócio.
+     * Disponível apenas via botão (ActionPerformed).
+     */    
     private void editar() {
         this.rNCultura.editar();
     }
-    
+    /**
+     * Chama o método novo da regra de negócio.
+     * Disponível apenas via botão (ActionPerformed).
+     */    
     private void novo() {
         this.rNCultura.novo();
     }
-    
+    /**
+     * Chama o método salvar da regra de negócio.
+     * Disponível apenas via botão (ActionPerformed).
+     */
     private void salvar() {
         this.rNCultura.salvar();
     }

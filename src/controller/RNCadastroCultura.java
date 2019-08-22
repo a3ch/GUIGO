@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
-
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -12,12 +6,23 @@ import javax.swing.JOptionPane;
 import model.Cultura;
 import view.DialogTelaCadastroCultura;
 import model.CulturaDao;
-import model.Usuario;
+
 /**
- *
- * @author banshee
+ * Classe utilizada para descrever a regra de negócio do cadastro de culturas, aplicando restrições.
+ * 
+ * @author Caio Montenegro
+ * @version 0.1
+ * @since 0.1
  */
 public class RNCadastroCultura {
+    /**
+     * @param telaCadastroCultura
+     * @param dao
+     * @param conexao
+     * 
+     * @param novo
+     * @param id
+     */
     private DialogTelaCadastroCultura telaCadastroCultura;
     private CulturaDao dao;
     private Connection conexao;
@@ -25,7 +30,13 @@ public class RNCadastroCultura {
     private boolean novo = true;
     private int id = 0;
     
-    
+    /**
+     * Método Construtor.
+     * Gerencia os campos da tela e lista os registros do banco de dados.
+     * 
+     * @param telaCadastroCultura Tela que será aplicada as regras de negócio.
+     * @param conexao Conexão atual com o servidor.
+     */
     
     public RNCadastroCultura(DialogTelaCadastroCultura telaCadastroCultura, Connection conexao) {
         this.telaCadastroCultura = telaCadastroCultura;
@@ -35,9 +46,20 @@ public class RNCadastroCultura {
         this.listar();
     }
     
+    /**
+     * Regra para listagem das culturas cadastradas.
+     * Serve para mostrar os registros das culturas cadastradas na tela, assim que a mesma é aberta.
+     * Chama o método "listaDados", enviando um objeto de ArrayList do "CulturaDao", com todos os registros.
+     */
+    
     private void listar() {
         listaDados(dao.listar());
     }
+    
+    /**
+     * Regra para salvaguardar uma nova cultura.
+     * Verifica se todos os campos foram preenchidos antes de salvar.
+     */
     
     public void salvar() {
         if (validaCampos()) {
@@ -65,6 +87,10 @@ public class RNCadastroCultura {
         }
     }
     
+    /**
+     * Regra de preparação para adicionar novo registro.
+     * Conversa com o objeto de Tela, disponibiliza botões e campos e limpa os mesmos para inserção se novos dados.
+     */
     public void novo() {
         this.novo = true;
         this.gerenciarBotoes();
@@ -72,6 +98,10 @@ public class RNCadastroCultura {
         this.limpar();
     }
     
+    /**
+     * Regra para exclusão de um registro selecionado.
+     * Verifica se há algum item selecionado, caso exista, exclui após a confirmação.
+     */
     public void excluir() {
         int item = this.telaCadastroCultura.getjTableCulturas().getSelectedRow();
         if(item>=0){
@@ -89,7 +119,11 @@ public class RNCadastroCultura {
             JOptionPane.showMessageDialog(this.telaCadastroCultura, "Selecione um item");
         }
     }
-    
+    /**
+     * Regra para edição de um registro selecionado.
+     * Verifica se há algum item selecionado, caso exista, disponibiliza a edição.
+     * Verifica se existe algum registro igual no banco de dados antes de confirmar a edição, caso exista, não insere.
+     */
     public void editar() {
         int item = this.telaCadastroCultura.getjTableCulturas().getSelectedRow();
         if(item>=0){
@@ -110,6 +144,11 @@ public class RNCadastroCultura {
         } 
     }
     
+    /**
+     * Método responsável por listar, na tela, as culturas já registradas no banco de dados.
+     * @param listaCulturas O array de registros puxado do banco de dados.
+     */
+    
     private void listaDados(ArrayList<Cultura> listaCulturas) {
      limpaTabela();
      for(int i=0;i<listaCulturas.size();i++){
@@ -122,30 +161,45 @@ public class RNCadastroCultura {
                            listaCulturas.get(i).getDiasEngorda());
         }      
     }
-    
+    /**
+     * Adiciona um registro na tabela da tela de cadastro de cultura instanciada.
+     * @param objects Tipo genérico para inserção na tela.
+     */
     private void adicionaTabela(Object... objects){
         this.telaCadastroCultura.getModelo().addRow(objects);
     }
     
+    /**
+     * Limpa a tabela da tela de cadastro de cultura instanciada.
+     */
     private void limpaTabela(){
         int linhas = this.telaCadastroCultura.getModelo().getRowCount();
         for(int i=0;i<linhas;i++){
             this.telaCadastroCultura.getModelo().removeRow(0);
         }
     }
-    
+    /**
+     * Limpa os campos da tela de cadastro de cultura instanciada.
+     */
     public void limpar() {
         this.telaCadastroCultura.limpar();
     }
-    
+    /**
+     * Confirma se os campos atendem à regra de negócio.
+     * @return Verdadeiro, pois essa é a única função do método.
+     */
     private boolean validaCampos() {
         return true;
     }
-    
+    /**
+     * Deixa um campo disponível para uso.
+     */
     private void gerenciarCampos() {
         this.telaCadastroCultura.gerenciarCampos();
     }
-    
+    /**
+     * Deixa um botão disponível para uso.
+     */
     private void gerenciarBotoes() {
         this.telaCadastroCultura.gerenciarBotoes();
     }

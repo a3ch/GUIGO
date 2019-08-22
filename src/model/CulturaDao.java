@@ -5,18 +5,31 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-        
+
 /**
- *
+ * Classe responsável pela troca de informações de objetos tipo Cultura com o banco de dados.
  * @author Gustavo Rodrigues
+ * @version 0.1
+ * @since 0.1
  */
 public class CulturaDao {
+    /**
+     * @param conexao Variável que irá guardar a conexão com o banco de dados até o programa ser finalizado.
+     */
     private final Connection conexao;    
-
+    /**
+     * Método construtor.
+     * Faz a conexão com o servidor.
+     * @param conexao Variável que irá guardar a conexão com o banco de dados até o programa ser finalizado.
+     */
     public CulturaDao(Connection conexao) {
         this.conexao = conexao;
     }
-    
+    /**
+     * Método de inserção de registros no banco de dados.
+     * Verifica se já existe uma cultura cadastrada com os mesmos parâmetros, caso exista, retorna uma mensagem de erro. 
+     * @param cultura Objeto da classe Cultura que será usado para o registro no banco de dados.
+     */    
     public void inserir(Cultura cultura){
 
         if(!buscar(cultura)){
@@ -44,7 +57,12 @@ public class CulturaDao {
         } 
         
     }
-    
+    /**
+     * Método de exclusão de registros no banco de dados.
+     * Verifica se existe uma cultura cadastrada com a mesma chave primária, caso exista, exclui do servidor, 
+     * caso não exista, retorna uma mensagem de erro. 
+     * @param cultura Objeto da classe Cultura que será excluído do banco de dados.
+     */   
     public boolean excluir(Cultura cultura) {
         
         String sql = "delete from TbCulturas where codCultura = ?";
@@ -68,7 +86,12 @@ public class CulturaDao {
         return result;     
         
     }
-    
+    /**
+     * Método de alteração de registros já cadastrados no banco de dados.
+     * Verifica se já existe uma cultura cadastrada com os mesmos parâmetros, caso exista, altera os dados,
+     * caso não exista, retorna uma mensagem de erro. 
+     * @param cultura Objeto da classe Cultura que será alterado no banco de dados.
+     */    
     public void alterar(Cultura cultura) {
         String sql = "update TbCulturas set nomeCultura = ? , variedade = ?, cicloEmDias = ?, diasGerminacao = ?, diasBercario = ?, diasEngorda = ? where codCultura = ?";
 
@@ -94,7 +117,12 @@ public class CulturaDao {
         } 
         
     }
-    
+    /**
+     * Método de busca no banco de dados.
+     * Verifica se existe uma cultura cadastrada com os mesmos parâmetros passados, 
+     * caso exista, cria um objeto réplica e envia um sinal booleano representando do seu código (True). 
+     * @param cultura Objeto da classe Cultura que será usado para a busca no banco de dados.
+     */ 
     private boolean buscar(Cultura cultura) {
       
         String sql = "select * from TbCulturas where codCultura like ?";
@@ -125,7 +153,12 @@ public class CulturaDao {
         
         return(culturaBusca.getCodCultura()>0);
     }
-    
+    /**
+     * Método de pesquisa no banco de dados.
+     * Verifica se existe uma cultura cadastrada com os mesmos parâmetros passados, 
+     * caso exista, cria um objeto réplica e o envia completo para a rotina que requeriu. 
+     * @param codCultura Chave primária da classe Cultura que será usado para a pesquisa no banco de dados.
+     */     
     public Cultura pesquisar(int codCultura){
         String sql = "select * from TbCulturas where codCultura = ?";
         Cultura cultura = new Cultura();
@@ -155,7 +188,11 @@ public class CulturaDao {
         
         return cultura;
     }
-    
+    /**
+     * Método para extrair, em forma de lista, todos os registros do banco de dados.
+     * Cria um ArrayList da classe Cultura, preenche com todos os registros do banco de dados e retorna à rotina que fez a requisição.
+     * @return Um ArrayList da  classe Cultura preenchido com todos os registros da tabela TbCulturas.
+     */    
     public ArrayList<Cultura> listar() {
         
         String sql = "select * from TbCulturas order by codCultura";
