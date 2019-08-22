@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< Updated upstream
         <group>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/GitHub/GUIGO/src/controller/ControleEditarExcluirUsuario.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/GitHub/GUIGO/src/model/Usuario.java</file>
@@ -12,5 +13,8 @@
             <file>file:/C:/Users/gusta/OneDrive/Documentos/GitHub/GUIGO/src/controller/ControleLogin.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/GitHub/GUIGO/src/controller/ControlePrincipal.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> Stashed changes
     </open-files>
 </project-private>

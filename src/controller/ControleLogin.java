@@ -18,6 +18,11 @@ public class ControleLogin implements ActionListener {
     /**
      * @param rNLogin
      * @param telaLogin
+<<<<<<< Updated upstream
+=======
+     * @param telaDescanso
+     * @param conexao
+>>>>>>> Stashed changes
      */
     private RNLogin rNLogin;
     private TelaLogin telaLogin;
