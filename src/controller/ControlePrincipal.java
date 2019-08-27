@@ -137,7 +137,7 @@ public class ControlePrincipal implements ActionListener {
         public void run() {
             try {
                 VariaveisAmbiente va = new VariaveisAmbiente();
-                for(int i = 0; i < 100; i++) {
+                while(true) {
                     //gera temperatura umidade e luminosidade 
                     temperatura = random.nextInt(100);
                     umidade = random.nextInt(100);
