@@ -79,7 +79,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemVariaveisAmbiente = new javax.swing.JMenuItem();
         jMenuSair = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuISobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GUIGO");
@@ -250,9 +250,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelPh)
-                        .addComponent(jLabelCondutividadeEletrica))
+                    .addComponent(jLabelPh)
+                    .addComponent(jLabelCondutividadeEletrica)
                     .addComponent(jLabelOD))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -331,8 +330,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu2.setText("Ajuda");
 
-        jMenuItem1.setText("Sobre");
-        jMenu2.add(jMenuItem1);
+        jMenuISobre.setText("Sobre");
+        jMenuISobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuISobreActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuISobre);
 
         jMenuBar1.add(jMenu2);
 
@@ -370,6 +374,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
  
     }//GEN-LAST:event_jMenuUsuariosActionPerformed
+
+    private void jMenuISobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuISobreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuISobreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,7 +445,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
     private javax.swing.JMenuItem jMenuCultura;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuISobre;
     private javax.swing.JMenuItem jMenuItemVariaveisAmbiente;
     private javax.swing.JMenuItem jMenuSair;
     private javax.swing.JMenuItem jMenuUsuarios;
@@ -543,6 +551,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void setjLabelUmidade(JLabel jLabelUmidade) {
         this.jLabelUmidade = jLabelUmidade;
+    }
+
+    public JMenuItem getjMenuISobre() {
+        return jMenuISobre;
+    }
+
+    public void setjMenuISobre(JMenuItem jMenuISobre) {
+        this.jMenuISobre = jMenuISobre;
     }
 
     

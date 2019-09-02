@@ -49,10 +49,13 @@
             <Property name="text" type="java.lang.String" value="Ajuda"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuISobre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sobre"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuISobreActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -350,10 +353,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelPh" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelCondutividadeEletrica" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabelPh" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCondutividadeEletrica" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelOD" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>

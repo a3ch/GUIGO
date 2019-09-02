@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import view.TelaPrincipal;
+import view.DialogTelaCreditos;
 import model.VariaveisAmbienteDao;
 import model.VariaveisAmbiente;
 
@@ -26,6 +27,7 @@ public class ControlePrincipal implements ActionListener {
      * @param tipo
      */
     private TelaPrincipal telaPrincipal;
+    private DialogTelaCreditos telaCredito;
     private Connection conexao;
     private int tipo;
     
@@ -69,6 +71,7 @@ public class ControlePrincipal implements ActionListener {
         telaPrincipal.getjMenuCultura().addActionListener(this); // Ecustar o botão de cadastros de culturas
         telaPrincipal.getjMenuUsuarios().addActionListener(this); // Escuta o botão de cadastros de usuario
         telaPrincipal.getjMenuSair().addActionListener(this); // Escuta o botão de sair
+        telaPrincipal.getjMenuISobre().addActionListener(this); // Escuta o botão de sobre
     
         telaPrincipal.setVisible(true);
 
@@ -97,6 +100,13 @@ public class ControlePrincipal implements ActionListener {
         // Variaveis de Ambiente
         if (e.getSource() == telaPrincipal.getjMenuItemVariaveisAmbiente()) {
             new ControleVariaveisAmbiente(telaPrincipal, this.conexao);
+        }
+        
+        // Sobre
+        if (e.getSource() == telaPrincipal.getjMenuISobre()) {
+            this.telaCredito = new DialogTelaCreditos(telaPrincipal, true);
+            this.telaCredito.setLocationRelativeTo(telaCredito);
+            this.telaCredito.setVisible(true);
         }
         /*
         //Excluir
