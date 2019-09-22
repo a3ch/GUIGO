@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import view.TelaPrincipal;
+import view.DialogTelaCreditos;
 import model.VariaveisAmbienteDao;
 import model.VariaveisAmbiente;
 
@@ -41,6 +42,7 @@ public class ControlePrincipal implements ActionListener {
      * @param random Variável do tipo Random utilizada para retornar, aleatoriamente, os dados fictícios gerados pela thread.
      */
     private TelaPrincipal telaPrincipal;
+    private DialogTelaCreditos telaCredito;
     private Connection conexao;
     private int tipo;
     
@@ -75,6 +77,7 @@ public class ControlePrincipal implements ActionListener {
         telaPrincipal.getjMenuCultura().addActionListener(this); // Escuta o botão de cadastros de culturas
         telaPrincipal.getjMenuUsuarios().addActionListener(this); // Escuta o botão de cadastros de usuario
         telaPrincipal.getjMenuSair().addActionListener(this); // Escuta o botão de sair
+        telaPrincipal.getjMenuISobre().addActionListener(this); // Escuta o botão de sobre
     
         telaPrincipal.setVisible(true);
 
@@ -104,7 +107,6 @@ public class ControlePrincipal implements ActionListener {
         if (e.getSource() == telaPrincipal.getjMenuItemVariaveisAmbiente()) {
             new ControleVariaveisAmbiente(telaPrincipal, this.conexao);
         }
-
         //Sair
         if (e.getSource() == telaPrincipal.getjMenuSair()) {
             System.exit(0);
