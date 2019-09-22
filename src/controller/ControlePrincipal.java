@@ -14,6 +14,7 @@ import model.VariaveisAmbiente;
 /**
  * Classe utilizada para criar a tela principal.
  * Implementa a interface ActionListener para monitoramento dos objetos adicionados.
+ * Faz a simulação dos microcontroladores utilizando threads.
  * 
  * @author Caio Montenegro
  * @version 0.1
@@ -22,26 +23,38 @@ import model.VariaveisAmbiente;
 
 public class ControlePrincipal implements ActionListener {
     /**
-     * @param telaPrincipal
-     * @param tipo
+     * @param telaPrincipal Variável que armazena a Tela Principal da sessão atual.
+     * @param conexao Variável que armazena a conexão com o banco de dados da sessão atual.
+     * @param tipo Um número inteiro que serve para identificar o tipo de usuário que fez o login. 
+     * Essa variável não deveria ser controlada nessa classe, além disso, em últimas análises, ela acabou perdendo o sentido.
+     * 
+     * @param dao Variável que permite leitura e gravação de dados em instâncias do tipo VariaveisAmbiente.
+     * Neste caso, está sendo acessada nessa classe por conta das threads implementadas também aqui.
+     * 
+     * @param umidade Variável int para armazenar um valor de umidade fictício gerado pela thread.
+     * @param luminosidade Variável int para armazenar um valor de luminosidade fictício gerado pela thread.
+     * @param temperatura Variável int para armazenar um valor de temperatura fictício gerado pela thread.
+     * @param ph Variável int para armazenar um valor de ph fictício gerado pela thread.
+     * @param o2Dissolvido Variável int para armazenar um valor de O2 dissolvido fictício gerado pela thread.
+     * @param contutividade Variável int para armazenar um valor de condutividade fictício gerado pela thread.
+     * 
+     * @param random Variável do tipo Random utilizada para retornar, aleatoriamente, os dados fictícios gerados pela thread.
      */
     private TelaPrincipal telaPrincipal;
     private Connection conexao;
     private int tipo;
     
     private VariaveisAmbienteDao dao;
-    private int umidade, luminosidade, temperatura, ph, o2Dissolvido, condutividade;
+    private float umidade, luminosidade, temperatura, ph, o2Dissolvido, condutividade;
     private Random random;
-
-
     
     /**
      * Método construtor.
      * Este método cria uma instancia da TelaPrincipal() e armazena na variável local.
      * 
      * @version 0.1
-     * @param tipo
-     * @throws java.io.IOException
+     * @param tipo Recebe o tipo de usuário proveniente do login usado na sessão atual.
+     * @throws java.io.IOException Nesse método, é o comando responsável por sinalizar se a conexão com o banco de dados ainda está ativa.
      * @since 0.1
      */
 
@@ -58,15 +71,8 @@ public class ControlePrincipal implements ActionListener {
         // Teste da implementação de Threads
         new Thread(t1).start();
         
-        /*
-        telaPrincipal.getjButtonCadastrarCultura().addActionListener(this); // Escuta o botão de editar cultura da tela principal
-        telaPrincipal.getjButtonEditarVariaveis().addActionListener(this); // Escuta o botão de editar variaveis da tela principal
-        telaPrincipal.getjMenuCadastraUsuario().addActionListener(this); // Escuta o botão de cadastrar usuarios
-        telaPrincipal.getjMenuEditaExcluiUsuario().addActionListener(this); // Escuta o botão de editar/excluir usuarios
-        telaPrincipal.getjButtonSair().addActionListener(this);
-        */
         telaPrincipal.getjMenuItemVariaveisAmbiente().addActionListener(this);
-        telaPrincipal.getjMenuCultura().addActionListener(this); // Ecustar o botão de cadastros de culturas
+        telaPrincipal.getjMenuCultura().addActionListener(this); // Escuta o botão de cadastros de culturas
         telaPrincipal.getjMenuUsuarios().addActionListener(this); // Escuta o botão de cadastros de usuario
         telaPrincipal.getjMenuSair().addActionListener(this); // Escuta o botão de sair
     
@@ -98,28 +104,17 @@ public class ControlePrincipal implements ActionListener {
         if (e.getSource() == telaPrincipal.getjMenuItemVariaveisAmbiente()) {
             new ControleVariaveisAmbiente(telaPrincipal, this.conexao);
         }
-        /*
-        //Excluir
-        if (e.getSource() == telaPrincipal.getjButtonExlcuirCultura()) {
-            
-        }
-        
-        //Editar
-        if (e.getSource() == telaPrincipal.getjMenuEditaExcluiUsuario()) {
-            ControleEditarExcluirUsuario cdeu = new ControleEditarExcluirUsuario(telaPrincipal);
-        }
-        // Editar ou excluir usuário
-        if (e.getSource() == telaPrincipal.getjButtonEditarVariaveis()) {
-            ControleVariaveisAmbiente cva = new ControleVariaveisAmbiente(telaPrincipal);
-        }
-        */
+
         //Sair
         if (e.getSource() == telaPrincipal.getjMenuSair()) {
             System.exit(0);
-        }
-        
+        }   
     }
     
+    /**
+     * Método verificarTipo.
+     * É utilizado para mostrar ou esconder funcionalidades de acordo com o tipo de usuário.
+     */
     private void verificarTipo() {
         switch(tipo) {
             case 2:
@@ -130,27 +125,31 @@ public class ControlePrincipal implements ActionListener {
                 break;
         }
     }
-    
-    // Teste da implementação de Threads
+  
+    /**
+     * Teste da implementação de Threads.
+     * Essa thread (for) vai gerar 100 registros da classe VariaveisAmbientede, com intervalos de 1 segundo.
+     * Esses registros serão exibidos na "área de trabalho" do programa (temperatura, umidade, luminosidade, ph, O2 dissolvido e CE) e ao mesmo tempo serão registrados no banco de dados.
+     */    
     private Runnable t1 = new Runnable() {
         @Override
         public void run() {
             try {
                 VariaveisAmbiente va = new VariaveisAmbiente();
+            
                 for(int i = 0; i < 100; i++) {
-                    //gera temperatura umidade e luminosidade 
                     temperatura = random.nextInt(100);
                     umidade = random.nextInt(100);
                     luminosidade =  random.nextInt(100);
                     ph = random.nextInt(15);
                     o2Dissolvido = random.nextInt(100);
                     condutividade = random.nextInt(100);
-                    telaPrincipal.getjLabelTemperatura().setText(Integer.toString(temperatura) + ".0°C");
-                    telaPrincipal.getjLabelUmidade().setText(Integer.toString(umidade) + ".0%");
-                    telaPrincipal.getjLabelLuminosidade().setText(Integer.toString(luminosidade) + ".0%");
-                    telaPrincipal.getjLabelPh().setText(Integer.toString(ph) + ".0");
-                    telaPrincipal.getjLabelOD().setText(Integer.toString(o2Dissolvido) + ".0%");
-                    telaPrincipal.getjLabelCondutividadeEletrica().setText(Integer.toString(condutividade) + ".0%");
+                    telaPrincipal.getjLabelTemperatura().setText(Float.toString(temperatura) + "°C");
+                    telaPrincipal.getjLabelUmidade().setText(Float.toString(umidade) + "%");
+                    telaPrincipal.getjLabelLuminosidade().setText(Float.toString(luminosidade) + "%");
+                    telaPrincipal.getjLabelPh().setText(Float.toString(ph));
+                    telaPrincipal.getjLabelOD().setText(Float.toString(o2Dissolvido) + "%");
+                    telaPrincipal.getjLabelCondutividadeEletrica().setText(Float.toString(condutividade) + "%");
                     va.setLuminosidade(luminosidade);
                     va.setTemperatura(temperatura);
                     va.setUmidade(umidade);
@@ -162,6 +161,5 @@ public class ControlePrincipal implements ActionListener {
                 }
             } catch (Exception e) {}
         }
-    };
-    
+    };   
 }
