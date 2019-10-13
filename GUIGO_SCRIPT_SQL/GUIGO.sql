@@ -8,25 +8,27 @@
 -- Table structure for table `TbCulturas`
 --
 
-CREATE DATABASE GUIGO;
+CREATE DATABASE GUIGO
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_general_ci;
 
 USE GUIGO;
 
-CREATE TABLE `TbCulturas` (
-  `codCultura` int(11) NOT NULL,
-  `nomeCultura` varchar(15) NOT NULL,
-  `variedade` varchar(15) NOT NULL,
-  `cicloEmDias` int(4) NOT NULL,
-  `diasGerminacao` int(11) NOT NULL,
-  `diasBercario` int(11) NOT NULL,
-  `diasEngorda` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE TbCulturas (
+  codCultura int NOT NULL,
+  nomeCultura varchar(15) NOT NULL,
+  variedade varchar(15) NOT NULL,
+  cicloEmDias int NOT NULL,
+  diasGerminacao int NOT NULL,
+  diasBercario int NOT NULL,
+  diasEngorda int NOT NULL
+) ENGINE = InnoDB;
 
 --
 -- Dumping data for table `TbCulturas`
 --
 
-INSERT INTO `TbCulturas` (`codCultura`, `nomeCultura`, `variedade`, `cicloEmDias`, `diasGerminacao`, `diasBercario`, `diasEngorda`) VALUES
+INSERT INTO TbCulturas (codCultura, nomeCultura, variedade, cicloEmDias, diasGerminacao, diasBercario, diasEngorda) VALUES
 (1, '1', '1', 1, 1, 1, 1);
 
 -- --------------------------------------------------------
@@ -35,7 +37,7 @@ INSERT INTO `TbCulturas` (`codCultura`, `nomeCultura`, `variedade`, `cicloEmDias
 -- Table structure for table `TbDataRealTime`
 --
 
-CREATE TABLE `TbDataRealTime` (
+CREATE TABLE TbDataRealTime (
   dataRT timestamp not null,
   temperatura float not null,
   umidade float not null,
@@ -43,7 +45,7 @@ CREATE TABLE `TbDataRealTime` (
   ph float not null,
   o2Dissolvido float not null,
   condutividadeElet float not null
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE = InnoDB;
 
 -- --------------------------------------------------------
 
@@ -51,21 +53,21 @@ CREATE TABLE `TbDataRealTime` (
 -- Table structure for table `TbUsuario`
 --
 
-CREATE TABLE `TbUsuario` (
-  `codUsuario` int(11) NOT NULL,
-  `nomeUsuario` varchar(45) NOT NULL,
-  `foneUsuario` varchar(15) NOT NULL,
-  `emailUsuario` varchar(100) NOT NULL,
-  `loginUsuario` varchar(15) NOT NULL,
-  `senhaUsuario` varchar(15) NOT NULL,
-  `tipoUsuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE TbUsuario (
+  codUsuario int NOT NULL,
+  nomeUsuario varchar(45) NOT NULL,
+  foneUsuario varchar(15) NOT NULL,
+  emailUsuario varchar(100) NOT NULL,
+  loginUsuario varchar(15) NOT NULL,
+  senhaUsuario varchar(15) NOT NULL,
+  tipoUsuario int NOT NULL
+) ENGINE = InnoDB;
 
 --
 -- Dumping data for table `TbUsuario`
 --
 
-INSERT INTO `TbUsuario` (`codUsuario`, `nomeUsuario`, `foneUsuario`, `emailUsuario`, `loginUsuario`, `senhaUsuario`, `tipoUsuario`) VALUES
+INSERT INTO TbUsuario (codUsuario, nomeUsuario, foneUsuario, emailUsuario, loginUsuario, senhaUsuario, tipoUsuario) VALUES
 (1, 'banana', '9999999', 'dasdasdasdasd', 'banana', '1234', 3),
 (4, 'Alexandre', '99-9 9999 9999', 'jsbahsbdh', 'bessa', '123', 3);
 
@@ -76,20 +78,20 @@ INSERT INTO `TbUsuario` (`codUsuario`, `nomeUsuario`, `foneUsuario`, `emailUsuar
 --
 -- Indexes for table `TbCulturas`
 --
-ALTER TABLE `TbCulturas`
-  ADD PRIMARY KEY (`codCultura`);
+ALTER TABLE TbCulturas
+  ADD PRIMARY KEY (codCultura);
 
 --
 -- Indexes for table `TbDataRealTime`
 --
-ALTER TABLE `TbDataRealTime`
-  ADD PRIMARY KEY (`dataRT`);
+ALTER TABLE TbDataRealTime
+  ADD PRIMARY KEY (dataRT);
 
 --
 -- Indexes for table `TbUsuario`
 --
-ALTER TABLE `TbUsuario`
-  ADD PRIMARY KEY (`codUsuario`);
+ALTER TABLE TbUsuario
+  ADD PRIMARY KEY (codUsuario);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -98,12 +100,12 @@ ALTER TABLE `TbUsuario`
 --
 -- AUTO_INCREMENT for table `TbCulturas`
 --
-ALTER TABLE `TbCulturas`
-  MODIFY `codCultura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE TbCulturas
+  MODIFY codCultura int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 4;
 
 --
 -- AUTO_INCREMENT for table `TbUsuario`
 --
-ALTER TABLE `TbUsuario`
-  MODIFY `codUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE TbUsuario
+  MODIFY codUsuario int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT = 5;
 COMMIT;
